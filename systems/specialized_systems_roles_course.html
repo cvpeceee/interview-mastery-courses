@@ -3,15 +3,311 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Specialized Systems & AI Roles</title>
-<style>body{font-family:system-ui;background:#0f1117;color:#e8eaed;padding:2rem;} .module{background:#1c1f2a;border-radius:12px;padding:1.5rem;margin:1rem 0;}</style>
+<title>Specialized Systems & AI Roles — Deep Course</title>
+<style>
+:root { --bg:#0f1117; --sidebar:#161922; --card:#1c1f2a; --accent:#00d4aa; --accent2:#4285f4; --text:#e8eaed; --muted:#9aa0a6; --border:#2d313c; }
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:system-ui,sans-serif; background:var(--bg); color:var(--text); line-height:1.65; }
+.layout { display:flex; min-height:100vh; }
+.sidebar { width:300px; background:var(--sidebar); border-right:1px solid var(--border); padding:1.5rem 1rem; position:sticky; top:0; height:100vh; overflow-y:auto; }
+.sidebar h2 { font-size:1.05rem; margin-bottom:1rem; color:var(--accent); }
+.nav-item { display:block; padding:0.5rem 0.75rem; border-radius:8px; color:var(--text); text-decoration:none; margin-bottom:0.2rem; font-size:0.88rem; }
+.nav-item:hover,.nav-item.active { background:#252836; color:var(--accent); }
+.progress-box { margin-top:1.5rem; padding:1rem; background:#1a1d28; border-radius:10px; font-size:0.85rem; }
+.progress-bar { height:8px; background:#2d313c; border-radius:4px; margin:0.5rem 0; overflow:hidden; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--accent),var(--accent2)); width:0%; transition:width 0.3s; }
+main { flex:1; padding:2rem 2.5rem; max-width:1100px; }
+.module { background:var(--card); border-radius:12px; padding:1.6rem; margin-bottom:1.5rem; border:1px solid var(--border); }
+.module h2 { color:var(--accent); font-size:1.35rem; margin-bottom:0.5rem; }
+.meta { display:flex; gap:1rem; font-size:0.85rem; color:var(--muted); margin-bottom:1rem; flex-wrap:wrap; }
+.meta span { background:#252836; padding:0.25rem 0.6rem; border-radius:6px; }
+.lesson { margin:1.2rem 0; padding:1rem; background:#161922; border-radius:8px; border-left:3px solid var(--accent); }
+.lesson h3 { font-size:1.05rem; margin-bottom:0.5rem; }
+.lesson ul,.lesson ol { margin:0.6rem 0 0.6rem 1.4rem; }
+.lesson li { margin:0.35rem 0; }
+.interview { background:#2a1f1a; border-left:3px solid #ff9f0a; padding:0.9rem 1rem; border-radius:6px; margin:0.9rem 0; }
+.tip { background:#1a2a1f; border-left:3px solid #34c759; padding:0.9rem 1rem; border-radius:6px; margin:0.9rem 0; }
+.check { margin:0.45rem 0; }
+.check input { margin-right:0.5rem; accent-color:var(--accent); }
+@media (max-width:800px) { .layout{flex-direction:column;} .sidebar{width:100%;height:auto;position:relative;} main{padding:1.2rem;} }
+</style>
 </head>
 <body>
-<h1>Specialized Systems & AI Roles Course</h1>
-<div class="module">
-<h2>Agentic AI, GPU Server/LPU/Robotics, Video/Streaming, Cloud-Native/NetInfra, Build Systems, Infrastructure Security, Kernel/Middleware/Sensor, Energy</h2>
-<p>Organized by skill similarity. Full interactive textbook version is in the interview-mastery-courses.tar.gz archive.</p>
-<p>Open the complete file from the archive for modules, interview practice, and progress tracking.</p>
+<div class="layout">
+<aside class="sidebar">
+  <h2>Specialized Systems Roles</h2>
+  <a class="nav-item" href="#overview">1. Overview</a>
+  <a class="nav-item" href="#agentic">2. Agentic AI & Systems ML</a>
+  <a class="nav-item" href="#gpuserver">3. GPU Server / LPU / Robotics Platforms</a>
+  <a class="nav-item" href="#video">4. Video & Streaming Systems</a>
+  <a class="nav-item" href="#cloudnative">5. Cloud-Native / CSP / NetInfra</a>
+  <a class="nav-item" href="#build">6. Build Systems & Dev Infra</a>
+  <a class="nav-item" href="#security">7. Infrastructure Security</a>
+  <a class="nav-item" href="#kernel">8. Kernel / Middleware / Sensor</a>
+  <a class="nav-item" href="#energy">9. Energy & Specialized Infra</a>
+  <a class="nav-item" href="#prep">10. Prep Plan</a>
+  <div class="progress-box">
+    <strong>Your Progress</strong>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <div id="progressText">0% complete</div>
+    <button onclick="resetProgress()" style="margin-top:0.6rem;background:#3a1f1f;color:#ff6b6b;border:none;padding:0.4rem 0.8rem;border-radius:6px;cursor:pointer;">Reset Progress</button>
+  </div>
+</aside>
+<main>
+<header>
+  <h1>Specialized Systems & AI Roles — Deep Course</h1>
+  <p style="color:var(--muted);margin:0.4rem 0 1rem;">Textbook-style modules organized by skill similarity from recent job listings (NVIDIA, Google, Anthropic, Meta, Equinix, CrowdStrike, GM, SpaceX, etc.). Staff / Principal depth.</p>
+  <div style="color:var(--accent);font-size:1.05rem;">Recommended focused time: 70–100 hours</div>
+</header>
+
+<section id="overview" class="module">
+  <h2>1. Overview</h2>
+  <div class="meta"><span>Time: 3–5 hours</span></div>
+  <div class="lesson">
+    <h3>How these roles are organized</h3>
+    <ul>
+      <li><strong>Agentic AI & Systems ML</strong> — Agent frameworks, compilers for ML systems, multi-agent orchestration</li>
+      <li><strong>GPU Server / LPU / Robotics Platforms</strong> — Server-level GPU software, low-power units, robotics middleware</li>
+      <li><strong>Video & Streaming Systems</strong> — Media pipelines, encoding, low-latency streaming</li>
+      <li><strong>Cloud-Native / CSP / NetInfra</strong> — Cloud-native stacks, CSP engagements, network infrastructure for cloud/AI</li>
+      <li><strong>Build Systems & Developer Infrastructure</strong> — Large-scale build modernization, monorepos, CI</li>
+      <li><strong>Infrastructure Security</strong> — Security for AI/infra platforms</li>
+      <li><strong>Kernel / Middleware / Sensor</strong> — Linux kernel work, middleware, endpoint sensors</li>
+      <li><strong>Energy & Specialized Infrastructure</strong> — Power/energy management, specialized platforms</li>
+    </ul>
+    <p>These complement the main Systems & AI Infrastructure course. Study the relevant modules based on the roles you are targeting.</p>
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I understand the organization and which modules map to the roles I’m targeting</label></div>
+</section>
+
+<section id="agentic" class="module">
+  <h2>2. Agentic AI & Systems ML</h2>
+  <div class="meta"><span>Time: 10–14 hours</span><span>Roles: NVIDIA Agentic AI, Meta Systems ML Compilers</span></div>
+  <div class="lesson">
+    <h3>Core concepts</h3>
+    <ul>
+      <li>Agent architectures: planning, tool use, memory, multi-agent coordination</li>
+      <li>Orchestration frameworks and reliability of agent loops</li>
+      <li>Compilers and runtimes for ML systems (graph optimization, scheduling)</li>
+      <li>Integration of agents with existing systems and data</li>
+      <li>Evaluation, safety, and failure modes of agentic systems</li>
+    </ul>
+  </div>
+  <div class="lesson">
+    <h3>Staff-level depth</h3>
+    <ul>
+      <li>How to design an agent system that is observable, debuggable, and cost-aware</li>
+      <li>Compiler passes that matter for latency and memory in serving or training</li>
+      <li>Trade-offs between fine-tuned agents vs general tool-using agents</li>
+      <li>Production failure modes: infinite loops, tool misuse, context explosion</li>
+    </ul>
+  </div>
+  <div class="interview">
+    <strong>Interview Practice</strong><br>
+    <strong>Question:</strong> Design an agentic system that can perform multi-step tasks across internal tools while staying within latency and cost budgets.<br>
+    <em>Approach:</em> Clarify task complexity and reliability requirements. Discuss planner, tool interface, memory, and evaluation. Address failure isolation and observability.<br>
+    <em>Follow-up:</em> How do you prevent or recover from an agent entering a bad loop?
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I can discuss agentic systems and systems ML compilers at interview depth</label></div>
+</section>
+
+<section id="gpuserver" class="module">
+  <h2>3. GPU Server / LPU / Robotics Platforms</h2>
+  <div class="meta"><span>Time: 12–16 hours</span><span>Roles: NVIDIA GPU Server, LPU, Halos Core & Robotics</span></div>
+  <div class="lesson">
+    <h3>Core concepts</h3>
+    <ul>
+      <li>Server-level GPU software stack (firmware, drivers, management)</li>
+      <li>Low-power or specialized units (LPU-style) constraints</li>
+      <li>Robotics platform middleware and real-time requirements</li>
+      <li>Hardware abstraction, telemetry, and fleet management</li>
+      <li>Reliability, thermal, and power management</li>
+    </ul>
+  </div>
+  <div class="lesson">
+    <h3>Staff-level depth</h3>
+    <ul>
+      <li>How software decisions affect server reliability and serviceability</li>
+      <li>Latency and determinism budgets for robotics control paths</li>
+      <li>Co-design with hardware teams on interfaces and failure handling</li>
+      <li>OTA and update safety for server and robotics platforms</li>
+    </ul>
+  </div>
+  <div class="interview">
+    <strong>Interview Practice</strong><br>
+    <strong>Question:</strong> Design the software architecture for a GPU server platform that must support reliable management, telemetry, and updates at fleet scale.<br>
+    <em>Approach:</em> Separate management plane from data plane. Discuss firmware, drivers, observability, and safe updates. Address failure domains.
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I can discuss GPU server and robotics platform software at staff level</label></div>
+</section>
+
+<section id="video" class="module">
+  <h2>4. Video & Streaming Systems</h2>
+  <div class="meta"><span>Time: 8–12 hours</span><span>Roles: NVIDIA Video, Streaming</span></div>
+  <div class="lesson">
+    <h3>Core concepts</h3>
+    <ul>
+      <li>Media pipelines: capture, encode, transport, decode</li>
+      <li>Latency vs quality trade-offs</li>
+      <li>Hardware acceleration (GPU encode/decode)</li>
+      <li>Adaptive streaming and congestion control</li>
+      <li>Observability and debugging of media systems</li>
+    </ul>
+  </div>
+  <div class="interview">
+    <strong>Interview Practice</strong><br>
+    <strong>Question:</strong> Design a low-latency video streaming pipeline that uses GPU acceleration. What are the key failure modes and how do you measure them?
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I can discuss video and streaming system design trade-offs</label></div>
+</section>
+
+<section id="cloudnative" class="module">
+  <h2>5. Cloud-Native / CSP / NetInfra</h2>
+  <div class="meta"><span>Time: 10–14 hours</span><span>Roles: NVIDIA Cloud-Native CSP, Google NetInfra, Equinix AI Infrastructure</span></div>
+  <div class="lesson">
+    <h3>Core concepts</h3>
+    <ul>
+      <li>Cloud-native stacks and operator patterns</li>
+      <li>CSP (Cloud Service Provider) engagement models and integration</li>
+      <li>Network infrastructure for large-scale cloud and AI workloads</li>
+      <li>Multi-tenant isolation, observability, and automation</li>
+      <li>Infrastructure as code and platform engineering</li>
+    </ul>
+  </div>
+  <div class="interview">
+    <strong>Interview Practice</strong><br>
+    <strong>Question:</strong> Design the networking and platform layer for an AI infrastructure offering that must be multi-tenant and highly available.
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I can discuss cloud-native and network infrastructure for AI platforms</label></div>
+</section>
+
+<section id="build" class="module">
+  <h2>6. Build Systems & Developer Infrastructure</h2>
+  <div class="meta"><span>Time: 8–12 hours</span><span>Roles: GM Build System Modernization</span></div>
+  <div class="lesson">
+    <h3>Core concepts</h3>
+    <ul>
+      <li>Large-scale monorepo and multi-repo build systems</li>
+      <li>Incremental builds, caching, and remote execution</li>
+      <li>Modernization strategies (Bazel, Buck, custom systems)</li>
+      <li>Developer experience, feedback loops, and reliability</li>
+    </ul>
+  </div>
+  <div class="interview">
+    <strong>Interview Practice</strong><br>
+    <strong>Question:</strong> How would you modernize a large, slow build system while keeping developers productive?
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I can discuss large-scale build system design and modernization</label></div>
+</section>
+
+<section id="security" class="module">
+  <h2>7. Infrastructure Security</h2>
+  <div class="meta"><span>Time: 8–12 hours</span><span>Roles: OpenAI Infrastructure Security</span></div>
+  <div class="lesson">
+    <h3>Core concepts</h3>
+    <ul>
+      <li>Security models for AI training and inference infrastructure</li>
+      <li>Identity, access control, and secrets management</li>
+      <li>Isolation between tenants and workloads</li>
+      <li>Supply chain, firmware, and runtime security</li>
+      <li>Threat modeling for large-scale systems</li>
+    </ul>
+  </div>
+  <div class="interview">
+    <strong>Interview Practice</strong><br>
+    <strong>Question:</strong> Threat model an AI training cluster. What are the highest-risk attack paths and how would you mitigate them?
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I can discuss infrastructure security for AI systems</label></div>
+</section>
+
+<section id="kernel" class="module">
+  <h2>8. Kernel / Middleware / Sensor</h2>
+  <div class="meta"><span>Time: 10–14 hours</span><span>Roles: NVIDIA Linux Kernel CSP, CrowdStrike Sensor, Intel Middleware</span></div>
+  <div class="lesson">
+    <h3>Core concepts</h3>
+    <ul>
+      <li>Linux kernel development for CSP or platform engagements</li>
+      <li>Middleware layers and their performance characteristics</li>
+      <li>Endpoint sensor design (cross-platform, low overhead, reliable)</li>
+      <li>Debugging and performance analysis at the kernel and middleware level</li>
+    </ul>
+  </div>
+  <div class="interview">
+    <strong>Interview Practice</strong><br>
+    <strong>Question:</strong> Design a low-overhead sensor that must run reliably on Linux, macOS, and Windows. What are the key constraints?
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I can discuss kernel, middleware, and sensor systems at interview depth</label></div>
+</section>
+
+<section id="energy" class="module">
+  <h2>9. Energy & Specialized Infrastructure</h2>
+  <div class="meta"><span>Time: 6–10 hours</span><span>Roles: Fluidstack Energy Management, specialized platforms</span></div>
+  <div class="lesson">
+    <h3>Core concepts</h3>
+    <ul>
+      <li>Power and energy management for data centers and edge systems</li>
+      <li>Trade-offs between performance, power, and thermal</li>
+      <li>Monitoring and control loops for energy efficiency</li>
+      <li>Integration with scheduling and workload placement</li>
+    </ul>
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I can discuss energy and specialized infrastructure considerations</label></div>
+</section>
+
+<section id="prep" class="module">
+  <h2>10. Full Preparation Plan</h2>
+  <div class="meta"><span>Time: Ongoing</span></div>
+  <div class="lesson">
+    <ol>
+      <li>Identify which roles you are targeting and study the matching modules above.</li>
+      <li>Combine with the main Systems & AI Infrastructure course for foundational depth.</li>
+      <li>Practice the interview questions in each module out loud.</li>
+      <li>Use company-specific courses for process and behavioral framing.</li>
+    </ol>
+    <div class="tip">These modules are organized by skill similarity so you can study the relevant clusters efficiently.</div>
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I completed the modules relevant to my target roles</label></div>
+</section>
+
+<footer style="margin-top:3rem;color:var(--muted);font-size:0.85rem;text-align:center;">
+  Specialized Systems & AI Roles course. Complements the main Systems & AI Infrastructure course. Progress saved locally.
+</footer>
+</main>
 </div>
+<script>
+const checks = document.querySelectorAll('.progress-check');
+const fill = document.getElementById('progressFill');
+const text = document.getElementById('progressText');
+function update() {
+  const done = [...checks].filter(c => c.checked).length;
+  const pct = checks.length ? Math.round((done / checks.length) * 100) : 0;
+  fill.style.width = pct + '%';
+  text.textContent = pct + '% complete (' + done + '/' + checks.length + ')';
+  localStorage.setItem('specializedSystemsProgress', JSON.stringify([...checks].map(c => c.checked)));
+}
+function load() {
+  const s = localStorage.getItem('specializedSystemsProgress');
+  if (s) {
+    const arr = JSON.parse(s);
+    checks.forEach((c, i) => { if (arr[i]) c.checked = true; });
+  }
+  update();
+}
+checks.forEach(c => c.addEventListener('change', update));
+function resetProgress() {
+  if (confirm('Reset all progress?')) {
+    checks.forEach(c => c.checked = false);
+    localStorage.removeItem('specializedSystemsProgress');
+    update();
+  }
+}
+load();
+document.querySelectorAll('.nav-item').forEach(a => {
+  a.addEventListener('click', () => {
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    a.classList.add('active');
+  });
+});
+</script>
 </body>
 </html>

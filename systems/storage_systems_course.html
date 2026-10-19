@@ -3,15 +3,235 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Storage Systems & Systems Software</title>
-<style>body{font-family:system-ui;background:#0f1117;color:#e8eaed;padding:2rem;} .module{background:#1c1f2a;border-radius:12px;padding:1.5rem;margin:1rem 0;}</style>
+<title>Storage Systems & Systems Software Interview Mastery — HPE / HP / Staff Level</title>
+<style>
+:root { --bg:#0f1117; --sidebar:#161922; --card:#1c1f2a; --accent:#00a4ef; --accent2:#76b900; --text:#e8eaed; --muted:#9aa0a6; --border:#2d313c; }
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:system-ui,sans-serif; background:var(--bg); color:var(--text); line-height:1.65; }
+.layout { display:flex; min-height:100vh; }
+.sidebar { width:280px; background:var(--sidebar); border-right:1px solid var(--border); padding:1.5rem 1rem; position:sticky; top:0; height:100vh; overflow-y:auto; }
+.sidebar h2 { font-size:1.05rem; margin-bottom:1rem; color:var(--accent); }
+.nav-item { display:block; padding:0.5rem 0.75rem; border-radius:8px; color:var(--text); text-decoration:none; margin-bottom:0.2rem; font-size:0.9rem; }
+.nav-item:hover,.nav-item.active { background:#252836; color:var(--accent); }
+.progress-box { margin-top:1.5rem; padding:1rem; background:#1a1d28; border-radius:10px; font-size:0.85rem; }
+.progress-bar { height:8px; background:#2d313c; border-radius:4px; margin:0.5rem 0; overflow:hidden; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--accent),var(--accent2)); width:0%; transition:width 0.3s; }
+main { flex:1; padding:2rem 2.5rem; max-width:1050px; }
+.module { background:var(--card); border-radius:12px; padding:1.6rem; margin-bottom:1.5rem; border:1px solid var(--border); }
+.module h2 { color:var(--accent); font-size:1.4rem; margin-bottom:0.5rem; }
+.meta { display:flex; gap:1rem; font-size:0.85rem; color:var(--muted); margin-bottom:1rem; }
+.meta span { background:#252836; padding:0.25rem 0.6rem; border-radius:6px; }
+.lesson { margin:1.2rem 0; padding:1rem; background:#161922; border-radius:8px; border-left:3px solid var(--accent); }
+.lesson h3 { font-size:1.1rem; margin-bottom:0.5rem; }
+.lesson ul,.lesson ol { margin:0.6rem 0 0.6rem 1.4rem; }
+.lesson li { margin:0.35rem 0; }
+.interview { background:#2a1f1a; border-left:3px solid #ff9f0a; padding:0.9rem 1rem; border-radius:6px; margin:0.9rem 0; }
+.tip { background:#1a2a1f; border-left:3px solid #34c759; padding:0.9rem 1rem; border-radius:6px; margin:0.9rem 0; }
+.check { margin:0.45rem 0; }
+.check input { margin-right:0.5rem; accent-color:var(--accent); }
+.anim-container { background:#0d0f14; border-radius:10px; padding:1rem; margin:1rem 0; border:1px solid #2a2e3a; }
+.anim-btn { background:#1e3a5f; color:var(--accent2); border:1px solid #2a4a7a; padding:0.45rem 0.9rem; border-radius:6px; cursor:pointer; margin:0.3rem 0.3rem 0.3rem 0; }
+.flow-box { display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap; margin:0.8rem 0; }
+.box { padding:0.55rem 1rem; background:#252836; border-radius:8px; border:2px solid #3a3f50; font-size:0.85rem; transition:all 0.4s; }
+.box.active { border-color:var(--accent); background:#1a2a3a; }
+@media (max-width:800px) { .layout{flex-direction:column;} .sidebar{width:100%;height:auto;position:relative;} main{padding:1.2rem;} }
+</style>
 </head>
 <body>
-<h1>Storage Systems Course</h1>
-<div class="module">
-<h2>C++ systems expertise, storage architecture, distributed storage, reliability</h2>
-<p>Covers HPE Storage and related systems roles. Full interactive textbook version is in the interview-mastery-courses.tar.gz archive.</p>
-<p>Open the complete file from the archive for modules, interview practice, and progress tracking.</p>
+<div class="layout">
+<aside class="sidebar">
+  <h2>Storage & Systems</h2>
+  <a class="nav-item" href="#overview">1. Overview</a>
+  <a class="nav-item" href="#cpp">2. C++ Systems Expertise</a>
+  <a class="nav-item" href="#storage">3. Storage Systems Deep Dive</a>
+  <a class="nav-item" href="#distributed">4. Distributed Storage</a>
+  <a class="nav-item" href="#design">5. Design Questions</a>
+  <a class="nav-item" href="#job">6. On the Job</a>
+  <a class="nav-item" href="#prep">7. Prep Plan</a>
+  <div class="progress-box">
+    <strong>Your Progress</strong>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <div id="progressText">0% complete</div>
+    <button class="anim-btn" onclick="resetProgress()" style="margin-top:0.6rem;background:#3a1f1f;color:#ff6b6b;border:none;">Reset Progress</button>
+  </div>
+</aside>
+<main>
+<header>
+  <h1>Storage Systems & Systems Software Mastery</h1>
+  <p style="color:var(--muted);margin:0.4rem 0 1rem;">HPE / HP / Staff level. Deep C++ systems programming, storage architecture, distributed storage, and reliability. Covers Senior Systems/Software Engineer – Storage with C++ Expertise and related roles.</p>
+  <div style="color:var(--accent);font-size:1.05rem;">Recommended focused time: 50–70 hours</div>
+</header>
+
+<section id="overview" class="module">
+  <h2>1. Overview</h2>
+  <div class="meta"><span>Time: 4–6 hours</span></div>
+  <div class="lesson">
+    <h3>What these roles require</h3>
+    <ul>
+      <li>Strong C++ systems programming</li>
+      <li>Deep understanding of storage stacks (block, file, object)</li>
+      <li>Reliability, performance, and failure handling</li>
+      <li>Linux systems knowledge</li>
+      <li>Ability to design and debug large-scale storage systems</li>
+    </ul>
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I understand the scope of storage and systems software roles</label></div>
+</section>
+
+<section id="cpp" class="module">
+  <h2>2. C++ Systems Expertise</h2>
+  <div class="meta"><span>Time: 12–16 hours</span></div>
+  <div class="lesson">
+    <h3>Critical C++ topics for systems roles</h3>
+    <ul>
+      <li>Memory management: RAII, smart pointers, custom allocators</li>
+      <li>Move semantics and performance</li>
+      <li>Concurrency: atomics, lock-free structures, memory ordering</li>
+      <li>Templates and compile-time techniques used in high-performance code</li>
+      <li>Debugging memory and concurrency bugs</li>
+      <li>Writing cache-friendly and zero-copy code</li>
+    </ul>
+  </div>
+  <div class="interview">
+    <strong>Example questions</strong><br>
+    • Implement a simple lock-free ring buffer.<br>
+    • Discuss when you would use unique_ptr vs shared_ptr in a systems component.<br>
+    • How would you design a custom memory pool for high-throughput storage I/O?
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I can write and discuss high-performance C++ systems code including concurrency and memory management</label></div>
+</section>
+
+<section id="storage" class="module">
+  <h2>3. Storage Systems Deep Dive</h2>
+  <div class="meta"><span>Time: 15–20 hours</span></div>
+  <div class="lesson">
+    <h3>Core storage concepts</h3>
+    <ul>
+      <li>Block storage vs file systems vs object storage</li>
+      <li>RAID levels and their trade-offs</li>
+      <li>Caching strategies and write-back vs write-through</li>
+      <li>Journaling, copy-on-write, and consistency models</li>
+      <li>I/O paths: user space → kernel → device</li>
+      <li>Performance: IOPS, latency, throughput, queue depths</li>
+      <li>Failure modes: disk failure, power loss, partial writes</li>
+    </ul>
+  </div>
+  <div class="lesson">
+    <h3>Interview depth</h3>
+    <ul>
+      <li>How would you design a file system that survives power loss?</li>
+      <li>Explain the difference between RAID-5 and RAID-6 and when you would choose each.</li>
+      <li>How do you optimize a storage system that is latency-sensitive?</li>
+    </ul>
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I can explain storage architectures, consistency mechanisms, and performance trade-offs</label></div>
+</section>
+
+<section id="distributed" class="module">
+  <h2>4. Distributed Storage</h2>
+  <div class="meta"><span>Time: 10–14 hours</span></div>
+  <div class="lesson">
+    <h3>Key topics</h3>
+    <ul>
+      <li>Replication strategies and consistency models</li>
+      <li>Erasure coding vs replication</li>
+      <li>Data placement and rebalancing</li>
+      <li>Failure detection and recovery</li>
+      <li>Metadata management at scale</li>
+    </ul>
+  </div>
+  <div class="interview">
+    <strong>Design example</strong><br>
+    Design a distributed block storage system that can tolerate node and disk failures while providing strong consistency for writes. Discuss placement, replication, and recovery.
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I can design distributed storage systems with clear failure and consistency handling</label></div>
+</section>
+
+<section id="design" class="module">
+  <h2>5. Design Questions</h2>
+  <div class="meta"><span>Time: 8–12 hours</span></div>
+  <div class="lesson">
+    <h3>Practice prompts</h3>
+    <ul>
+      <li>Design a high-performance storage controller.</li>
+      <li>Design a distributed file system for enterprise workloads.</li>
+      <li>How would you add snapshot support to an existing storage system?</li>
+      <li>Design monitoring and alerting for a large storage cluster.</li>
+    </ul>
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I practiced multiple storage-related design questions end-to-end</label></div>
+</section>
+
+<section id="job" class="module">
+  <h2>6. On the Job Excellence</h2>
+  <div class="meta"><span>Time: Ongoing</span></div>
+  <div class="lesson">
+    <h3>What strong systems engineers do</h3>
+    <ul>
+      <li>Measure and profile I/O paths carefully</li>
+      <li>Design for failure from the start</li>
+      <li>Write clear, reviewable C++ that is also performant</li>
+      <li>Document consistency guarantees and failure modes</li>
+      <li>Collaborate with hardware and firmware teams when relevant</li>
+    </ul>
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I understand how to approach storage systems work professionally</label></div>
+</section>
+
+<section id="prep" class="module">
+  <h2>7. Preparation Plan</h2>
+  <div class="meta"><span>Time: Ongoing</span></div>
+  <div class="lesson">
+    <ol>
+      <li>C++ systems programming (memory, concurrency, performance)</li>
+      <li>Storage fundamentals and design practice</li>
+      <li>Distributed storage concepts</li>
+      <li>Full mock interviews</li>
+    </ol>
+    <p>Resources: Operating Systems books (storage chapters), C++ concurrency resources, papers on distributed storage systems.</p>
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I completed a full mock covering C++ systems and storage design</label></div>
+</section>
+
+<footer style="margin-top:3rem;color:var(--muted);font-size:0.85rem;text-align:center;">
+  Storage Systems course — HPE/HP focused. Progress saved in your browser.
+</footer>
+</main>
 </div>
+<script>
+const checks = document.querySelectorAll('.progress-check');
+const fill = document.getElementById('progressFill');
+const text = document.getElementById('progressText');
+function update() {
+  const done = [...checks].filter(c => c.checked).length;
+  const pct = checks.length ? Math.round((done / checks.length) * 100) : 0;
+  fill.style.width = pct + '%';
+  text.textContent = pct + '% complete (' + done + '/' + checks.length + ')';
+  localStorage.setItem('storageProgress', JSON.stringify([...checks].map(c => c.checked)));
+}
+function load() {
+  const s = localStorage.getItem('storageProgress');
+  if (s) {
+    const arr = JSON.parse(s);
+    checks.forEach((c, i) => { if (arr[i]) c.checked = true; });
+  }
+  update();
+}
+checks.forEach(c => c.addEventListener('change', update));
+function resetProgress() {
+  if (confirm('Reset all progress?')) {
+    checks.forEach(c => c.checked = false);
+    localStorage.removeItem('storageProgress');
+    update();
+  }
+}
+load();
+document.querySelectorAll('.nav-item').forEach(a => {
+  a.addEventListener('click', () => {
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    a.classList.add('active');
+  });
+});
+</script>
 </body>
 </html>
