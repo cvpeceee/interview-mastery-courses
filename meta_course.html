@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meta Software Engineer Interview Mastery — E5+ / Staff</title>
+<style>
+:root { --bg:#0f1117; --sidebar:#161922; --card:#1c1f2a; --accent:#0668E1; --accent2:#42b72a; --text:#e8eaed; --muted:#9aa0a6; --border:#2d313c; }
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:system-ui,sans-serif; background:var(--bg); color:var(--text); line-height:1.65; }
+.layout { display:flex; min-height:100vh; }
+.sidebar { width:270px; background:var(--sidebar); border-right:1px solid var(--border); padding:1.5rem 1rem; position:sticky; top:0; height:100vh; overflow-y:auto; }
+.sidebar h2 { font-size:1.05rem; margin-bottom:1rem; color:var(--accent); }
+.nav-item { display:block; padding:0.5rem 0.75rem; border-radius:8px; color:var(--text); text-decoration:none; margin-bottom:0.2rem; font-size:0.9rem; }
+.nav-item:hover,.nav-item.active { background:#252836; color:var(--accent); }
+.progress-box { margin-top:1.5rem; padding:1rem; background:#1a1d28; border-radius:10px; font-size:0.85rem; }
+.progress-bar { height:8px; background:#2d313c; border-radius:4px; margin:0.5rem 0; overflow:hidden; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--accent),var(--accent2)); width:0%; transition:width 0.3s; }
+main { flex:1; padding:2rem 2.5rem; max-width:1000px; }
+.module { background:var(--card); border-radius:12px; padding:1.6rem; margin-bottom:1.5rem; border:1px solid var(--border); }
+.module h2 { color:var(--accent); font-size:1.4rem; margin-bottom:0.5rem; }
+.meta { display:flex; gap:1rem; font-size:0.85rem; color:var(--muted); margin-bottom:1rem; }
+.meta span { background:#252836; padding:0.25rem 0.6rem; border-radius:6px; }
+.lesson { margin:1.2rem 0; padding:1rem; background:#161922; border-radius:8px; border-left:3px solid var(--accent); }
+.lesson h3 { font-size:1.1rem; margin-bottom:0.5rem; }
+.lesson ul,.lesson ol { margin:0.6rem 0 0.6rem 1.4rem; }
+.lesson li { margin:0.35rem 0; }
+.interview { background:#2a1f1a; border-left:3px solid #ff9f0a; padding:0.9rem 1rem; border-radius:6px; margin:0.9rem 0; }
+.tip { background:#1a2a1f; border-left:3px solid #34c759; padding:0.9rem 1rem; border-radius:6px; margin:0.9rem 0; }
+.check { margin:0.45rem 0; }
+.check input { margin-right:0.5rem; accent-color:var(--accent); }
+.anim-container { background:#0d0f14; border-radius:10px; padding:1rem; margin:1rem 0; border:1px solid #2a2e3a; }
+.anim-btn { background:#1e3a5f; color:var(--accent2); border:1px solid #2a4a7a; padding:0.45rem 0.9rem; border-radius:6px; cursor:pointer; margin:0.3rem 0.3rem 0.3rem 0; }
+.flow-box { display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap; margin:0.8rem 0; }
+.box { padding:0.55rem 1rem; background:#252836; border-radius:8px; border:2px solid #3a3f50; font-size:0.85rem; transition:all 0.4s; }
+.box.active { border-color:var(--accent); background:#1a2a3a; }
+@media (max-width:800px) { .layout{flex-direction:column;} .sidebar{width:100%;height:auto;position:relative;} main{padding:1.2rem;} }
+</style>
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar">
+  <h2>Meta Course</h2>
+  <a class="nav-item" href="#process">1. Process</a>
+  <a class="nav-item" href="#coding">2. Coding (Ninja)</a>
+  <a class="nav-item" href="#design">3. System Design (Jedi)</a>
+  <a class="nav-item" href="#behavioral">4. Behavioral</a>
+  <a class="nav-item" href="#prep">5. Prep Plan</a>
+  <div class="progress-box">
+    <strong>Your Progress</strong>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <div id="progressText">0% complete</div>
+    <button class="anim-btn" onclick="resetProgress()" style="margin-top:0.6rem;background:#3a1f1f;color:#ff6b6b;border:none;">Reset Progress</button>
+  </div>
+</aside>
+<main>
+<header>
+  <h1>Meta Software Engineer Interview Mastery</h1>
+  <p style="color:var(--muted);margin:0.4rem 0 1rem;">E5+ / Staff level. Fast, correct coding that runs; large-scale system design; impact-focused behavioral.</p>
+  <div style="color:var(--accent2);font-size:1.05rem;">Recommended focused time: 50–70 hours</div>
+</header>
+
+<section id="process" class="module">
+  <h2>1. Interview Process</h2>
+  <div class="meta"><span>Time: 4–6 hours</span></div>
+  <div class="lesson">
+    <h3>Typical stages</h3>
+    <ul>
+      <li>Recruiter screen</li>
+      <li>Technical phone screen (45 min, often two problems on CoderPad — code is expected to run)</li>
+      <li>Onsite loop: two coding rounds (“Ninja”), system design (“Jedi” for E4/E5+), behavioral</li>
+      <li>Some loops include an AI-assisted coding round</li>
+      <li>Team matching</li>
+    </ul>
+    <div class="tip">Speed and working code matter. Meta values practical correctness over pure cleverness.</div>
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I understand Meta’s loop and coding speed expectations</label></div>
+</section>
+
+<section id="coding" class="module">
+  <h2>2. Coding Preparation (Ninja)</h2>
+  <div class="meta"><span>Time: 20–25 hours</span></div>
+  <div class="lesson">
+    <h3>What is expected</h3>
+    <ul>
+      <li>Solve 1–2 medium (sometimes medium-hard) problems in ~45 minutes</li>
+      <li>Code that runs and handles edge cases</li>
+      <li>Clear but concise communication</li>
+    </ul>
+    <p>High-frequency topics: graphs (BFS/DFS, shortest paths), trees, strings, hash maps, dynamic programming, two pointers.</p>
+  </div>
+  <div class="interview">
+    <strong>Practice method</strong><br>
+    Do timed sessions. Aim to finish a medium problem cleanly in 15–20 minutes with testing. Practice narrating just enough to show thinking without slowing down.
+  </div>
+  <div class="anim-container">
+    <h4>Animation: Speed + Correctness</h4>
+    <div class="flow-box" id="codeFlow">
+      <div class="box">Clarify quickly</div><span>→</span>
+      <div class="box">Plan</div><span>→</span>
+      <div class="box">Code</div><span>→</span>
+      <div class="box">Test</div><span>→</span>
+      <div class="box">Optimize if time</div>
+    </div>
+    <button class="anim-btn" onclick="animateFlow('codeFlow')">Animate</button>
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I can solve two medium problems cleanly under time pressure</label></div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I practiced graph and tree problems heavily</label></div>
+</section>
+
+<section id="design" class="module">
+  <h2>3. System Design (Jedi)</h2>
+  <div class="meta"><span>Time: 14–18 hours</span></div>
+  <div class="lesson">
+    <h3>Common prompts</h3>
+    <ul>
+      <li>Design News Feed / Instagram</li>
+      <li>Design Messenger / WhatsApp</li>
+      <li>Design top-K trending topics</li>
+      <li>Design typeahead / search suggestions</li>
+      <li>Design file storage or web crawler</li>
+    </ul>
+    <p>Meta expects planetary-scale thinking: sharding, caching, real-time updates, failure handling at extreme scale.</p>
+  </div>
+  <div class="interview">
+    <strong>Example approach for News Feed</strong><br>
+    Clarify: ranking vs chronological? Real-time? Scale of users and posts?<br>
+    Discuss fan-out on write vs fan-out on read, caching layers, ranking service, and how to handle celebrity accounts or spikes.
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I can design a social feed or messaging system at Meta scale</label></div>
+</section>
+
+<section id="behavioral" class="module">
+  <h2>4. Behavioral</h2>
+  <div class="meta"><span>Time: 6–8 hours</span></div>
+  <div class="lesson">
+    <h3>Signals Meta looks for</h3>
+    <ul>
+      <li>Impact and ownership</li>
+      <li>Moving fast and delivering results</li>
+      <li>Collaboration and handling conflict</li>
+      <li>Depth on past projects</li>
+    </ul>
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I have strong impact and collaboration stories</label></div>
+</section>
+
+<section id="prep" class="module">
+  <h2>5. Preparation Plan</h2>
+  <div class="meta"><span>Time: Ongoing</span></div>
+  <div class="lesson">
+    <ol>
+      <li>Timed coding practice focused on graphs, trees, and strings</li>
+      <li>System design for social-scale products</li>
+      <li>Behavioral stories centered on impact</li>
+      <li>Full mock loops</li>
+    </ol>
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I completed full mock loops</label></div>
+</section>
+
+<footer style="margin-top:3rem;color:var(--muted);font-size:0.85rem;text-align:center;">
+  Meta course — E5+/Staff focused. Progress saved in your browser.
+</footer>
+</main>
+</div>
+<script>
+const checks = document.querySelectorAll('.progress-check');
+const fill = document.getElementById('progressFill');
+const text = document.getElementById('progressText');
+function update() {
+  const done = [...checks].filter(c => c.checked).length;
+  const pct = checks.length ? Math.round((done / checks.length) * 100) : 0;
+  fill.style.width = pct + '%';
+  text.textContent = pct + '% complete (' + done + '/' + checks.length + ')';
+  localStorage.setItem('metaProgressV2', JSON.stringify([...checks].map(c => c.checked)));
+}
+function load() {
+  const s = localStorage.getItem('metaProgressV2');
+  if (s) {
+    const arr = JSON.parse(s);
+    checks.forEach((c, i) => { if (arr[i]) c.checked = true; });
+  }
+  update();
+}
+checks.forEach(c => c.addEventListener('change', update));
+function resetProgress() {
+  if (confirm('Reset all progress?')) {
+    checks.forEach(c => c.checked = false);
+    localStorage.removeItem('metaProgressV2');
+    update();
+  }
+}
+function animateFlow(id) {
+  const boxes = document.querySelectorAll('#' + id + ' .box');
+  boxes.forEach(b => b.classList.remove('active'));
+  let i = 0;
+  const timer = setInterval(() => {
+    if (i < boxes.length) {
+      boxes[i].classList.add('active');
+      i++;
+    } else clearInterval(timer);
+  }, 450);
+}
+load();
+document.querySelectorAll('.nav-item').forEach(a => {
+  a.addEventListener('click', () => {
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    a.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

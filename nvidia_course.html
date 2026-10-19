@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NVIDIA Software Engineer Interview Mastery — Staff / Principal Level</title>
+<style>
+:root { --bg:#0f1117; --sidebar:#161922; --card:#1c1f2a; --accent:#76b900; --accent2:#a0d468; --text:#e8eaed; --muted:#9aa0a6; --border:#2d313c; }
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:system-ui,sans-serif; background:var(--bg); color:var(--text); line-height:1.65; }
+.layout { display:flex; min-height:100vh; }
+.sidebar { width:280px; background:var(--sidebar); border-right:1px solid var(--border); padding:1.5rem 1rem; position:sticky; top:0; height:100vh; overflow-y:auto; }
+.sidebar h2 { font-size:1.05rem; margin-bottom:1rem; color:var(--accent); }
+.nav-item { display:block; padding:0.5rem 0.75rem; border-radius:8px; color:var(--text); text-decoration:none; margin-bottom:0.2rem; font-size:0.9rem; }
+.nav-item:hover,.nav-item.active { background:#252836; color:var(--accent); }
+.progress-box { margin-top:1.5rem; padding:1rem; background:#1a1d28; border-radius:10px; font-size:0.85rem; }
+.progress-bar { height:8px; background:#2d313c; border-radius:4px; margin:0.5rem 0; overflow:hidden; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--accent),var(--accent2)); width:0%; transition:width 0.3s; }
+main { flex:1; padding:2rem 2.5rem; max-width:1050px; }
+.module { background:var(--card); border-radius:12px; padding:1.6rem; margin-bottom:1.5rem; border:1px solid var(--border); }
+.module h2 { color:var(--accent); font-size:1.4rem; margin-bottom:0.5rem; }
+.meta { display:flex; gap:1rem; font-size:0.85rem; color:var(--muted); margin-bottom:1rem; }
+.meta span { background:#252836; padding:0.25rem 0.6rem; border-radius:6px; }
+.lesson { margin:1.2rem 0; padding:1rem; background:#161922; border-radius:8px; border-left:3px solid var(--accent); }
+.lesson h3 { font-size:1.1rem; margin-bottom:0.5rem; }
+.lesson ul,.lesson ol { margin:0.6rem 0 0.6rem 1.4rem; }
+.lesson li { margin:0.35rem 0; }
+.interview { background:#2a1f1a; border-left:3px solid #ff9f0a; padding:0.9rem 1rem; border-radius:6px; margin:0.9rem 0; }
+.tip { background:#1a2a1f; border-left:3px solid #34c759; padding:0.9rem 1rem; border-radius:6px; margin:0.9rem 0; }
+.code { background:#0d0f14; padding:1rem; border-radius:8px; overflow-x:auto; font-family:monospace; font-size:0.88rem; margin:0.8rem 0; border:1px solid #2a2e3a; }
+.check { margin:0.45rem 0; }
+.check input { margin-right:0.5rem; accent-color:var(--accent); }
+.anim-container { background:#0d0f14; border-radius:10px; padding:1rem; margin:1rem 0; border:1px solid #2a2e3a; }
+.anim-btn { background:#1e3a5f; color:var(--accent2); border:1px solid #2a4a7a; padding:0.45rem 0.9rem; border-radius:6px; cursor:pointer; margin:0.3rem 0.3rem 0.3rem 0; }
+.flow-box { display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap; margin:0.8rem 0; }
+.box { padding:0.55rem 1rem; background:#252836; border-radius:8px; border:2px solid #3a3f50; font-size:0.85rem; transition:all 0.4s; }
+.box.active { border-color:var(--accent); background:#1a2a1a; box-shadow:0 0 10px rgba(118,185,0,0.3); }
+@media (max-width:800px) { .layout{flex-direction:column;} .sidebar{width:100%;height:auto;position:relative;} main{padding:1.2rem;} }
+</style>
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar">
+  <h2>NVIDIA Course</h2>
+  <a class="nav-item" href="#process">1. Process & Roles</a>
+  <a class="nav-item" href="#coding">2. Coding & Systems</a>
+  <a class="nav-item" href="#gpu">3. GPU & CUDA Depth</a>
+  <a class="nav-item" href="#eda">4. EDA Infrastructure</a>
+  <a class="nav-item" href="#av">5. AV Platform</a>
+  <a class="nav-item" href="#design">6. System Design</a>
+  <a class="nav-item" href="#domain">7. Domain Expertise</a>
+  <a class="nav-item" href="#behavioral">8. Behavioral</a>
+  <a class="nav-item" href="#job">9. On the Job</a>
+  <a class="nav-item" href="#prep">10. Prep Plan</a>
+  <div class="progress-box">
+    <strong>Your Progress</strong>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <div id="progressText">0% complete</div>
+    <button class="anim-btn" onclick="resetProgress()" style="margin-top:0.6rem;background:#3a1f1f;color:#ff6b6b;border:none;">Reset Progress</button>
+  </div>
+</aside>
+<main>
+<header>
+  <h1>NVIDIA Software Engineer Interview Mastery</h1>
+  <p style="color:var(--muted);margin:0.4rem 0 1rem;">Staff / Principal level. Systems programming, GPU architecture, CUDA, performance, and hardware-software co-design. Textbook-style depth for interviews and on-the-job excellence.</p>
+  <div style="color:var(--accent);font-size:1.05rem;">Recommended focused time: 60–90 hours</div>
+</header>
+
+<section id="process" class="module">
+  <h2>1. Interview Process & Key Roles</h2>
+  <div class="meta"><span>Time: 6–8 hours</span></div>
+  <div class="lesson">
+    <h3>Typical process</h3>
+    <ul>
+      <li>Recruiter screen</li>
+      <li>Technical phone screen(s) — coding + domain questions</li>
+      <li>Onsite / virtual loop — multiple technical rounds (coding, systems, GPU/CUDA, design), behavioral</li>
+      <li>Team-specific depth is common (driver, firmware, CUDA, AI infrastructure, networking, etc.)</li>
+    </ul>
+    <p>NVIDIA interviews heavily emphasize systems thinking, performance, and domain expertise rather than pure LeetCode volume.</p>
+  </div>
+  <div class="lesson">
+    <h3>High-demand technical areas</h3>
+    <ul>
+      <li>GPU firmware and driver engineering</li>
+      <li>CUDA and GPU programming</li>
+      <li>Systems programming (C/C++, Linux kernel concepts)</li>
+      <li>AI infrastructure and large-scale training/inference</li>
+      <li>Networking (InfiniBand, high-speed interconnects)</li>
+      <li>Compiler and runtime work</li>
+    </ul>
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I understand NVIDIA’s process and the importance of systems/GPU depth</label></div>
+</section>
+
+<section id="coding" class="module">
+  <h2>2. Coding & Systems Programming</h2>
+  <div class="meta"><span>Time: 15–20 hours</span></div>
+  <div class="lesson">
+    <h3>What is evaluated</h3>
+    <ul>
+      <li>Solid algorithmic coding (medium difficulty is common)</li>
+      <li>Strong C/C++ proficiency</li>
+      <li>Memory management, pointers, concurrency</li>
+      <li>Performance awareness</li>
+      <li>Ability to write clean, production-quality systems code</li>
+    </ul>
+  </div>
+  <div class="lesson">
+    <h3>High-frequency topics</h3>
+    <ul>
+      <li>Arrays, strings, hash maps, trees, graphs</li>
+      <li>Concurrency: locks, atomics, lock-free structures</li>
+      <li>Memory models and cache awareness</li>
+      <li>Bit manipulation and low-level data structures</li>
+    </ul>
+  </div>
+  <div class="interview">
+    <strong>Example systems-style questions</strong><br>
+    • Implement a thread-safe queue or ring buffer.<br>
+    • Design and code a simple memory allocator or pool.<br>
+    • Write a concurrent hash map sketch and discuss correctness.<br>
+    • Debug a race condition or memory bug from a code snippet.
+  </div>
+  <div class="anim-container">
+    <h4>Animation: Systems Coding Approach</h4>
+    <div class="flow-box" id="codeFlow">
+      <div class="box">Clarify constraints</div><span>→</span>
+      <div class="box">Discuss memory & concurrency</div><span>→</span>
+      <div class="box">Write correct code</div><span>→</span>
+      <div class="box">Analyze performance</div><span>→</span>
+      <div class="box">Edge cases & failure modes</div>
+    </div>
+    <button class="anim-btn" onclick="animateFlow('codeFlow')">Animate</button>
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I practiced C/C++ systems problems including concurrency and memory</label></div>
+</section>
+
+<section id="gpu" class="module">
+  <h2>3. GPU Architecture & CUDA Depth</h2>
+  <div class="meta"><span>Time: 18–25 hours</span></div>
+  <div class="lesson">
+    <h3>Core concepts to master</h3>
+    <ul>
+      <li>GPU execution model: warps, SIMT, divergence</li>
+      <li>Memory hierarchy: global, shared, registers, texture/constant</li>
+      <li>Coalesced memory access and bank conflicts</li>
+      <li>Occupancy, latency hiding, and performance tuning</li>
+      <li>CUDA programming model and kernel design</li>
+      <li>Streams, events, and asynchronous execution</li>
+      <li>Interoperability with CPU and multi-GPU</li>
+    </ul>
+  </div>
+  <div class="lesson">
+    <h3>Interview-level questions</h3>
+    <ul>
+      <li>Explain warp divergence and how to avoid it.</li>
+      <li>How would you optimize a kernel that is memory-bound?</li>
+      <li>Describe shared memory bank conflicts and mitigation.</li>
+      <li>Walk through a matrix multiplication kernel optimization path.</li>
+      <li>How does a GPU hide latency compared to a CPU?</li>
+    </ul>
+  </div>
+  <div class="interview">
+    <strong>Staff-level depth</strong><br>
+    Be ready to discuss trade-offs in kernel design, how hardware features (tensor cores, etc.) affect software, and how you would diagnose a performance regression on a GPU. Know the difference between compute-bound and memory-bound kernels and how to measure them.
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I can explain GPU execution model, memory hierarchy, and common optimization techniques</label></div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I practiced writing or analyzing simple CUDA kernels</label></div>
+</section>
+
+<section id="eda" class="module">
+  <h2>4. EDA Infrastructure (Distributed Systems)</h2>
+  <div class="meta"><span>Time: 12–16 hours</span></div>
+  <div class="lesson">
+    <h3>What EDA infrastructure involves</h3>
+    <ul>
+      <li>Large-scale distributed compute for electronic design automation tools</li>
+      <li>Job scheduling, resource management, and multi-tenant clusters</li>
+      <li>Workflow orchestration for long-running, high-compute design tasks</li>
+      <li>Data management for large design databases and intermediate results</li>
+      <li>Reliability, checkpointing, and failure recovery for expensive jobs</li>
+      <li>Performance optimization of distributed toolchains</li>
+    </ul>
+  </div>
+  <div class="interview">
+    <strong>Sample questions</strong><br>
+    • Design a job scheduler for EDA workloads that can handle thousands of concurrent long-running jobs with varying resource needs.<br>
+    • How would you ensure a multi-day simulation or place-and-route job can recover from node failures?<br>
+    • Discuss data locality and I/O patterns in large EDA flows.
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I can discuss distributed job scheduling, fault tolerance, and data management for EDA-style workloads</label></div>
+</section>
+
+<section id="av" class="module">
+  <h2>5. AV Platform (Autonomous Vehicle Systems Software)</h2>
+  <div class="meta"><span>Time: 12–16 hours</span></div>
+  <div class="lesson">
+    <h3>Key technical areas</h3>
+    <ul>
+      <li>Real-time systems and latency budgets for perception, planning, and control</li>
+      <li>Sensor fusion pipelines (camera, lidar, radar)</li>
+      <li>Deterministic and reliable software on embedded or high-performance platforms</li>
+      <li>Safety, redundancy, and fail-operational design</li>
+      <li>Performance optimization under tight power and thermal constraints</li>
+      <li>Software architecture for multi-compute platforms in vehicles</li>
+    </ul>
+  </div>
+  <div class="interview">
+    <strong>Sample depth</strong><br>
+    Be ready to discuss how you would design a perception or planning pipeline with strict latency requirements, how you handle sensor failures, and how you measure and guarantee real-time behavior. Understand the difference between hard real-time and soft real-time constraints.
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I can discuss real-time systems, sensor pipelines, and safety considerations for AV platform software</label></div>
+</section>
+
+<section id="design" class="module">
+  <h2>4. System Design</h2>
+  <div class="meta"><span>Time: 10–15 hours</span></div>
+  <div class="lesson">
+    <h3>Common themes</h3>
+    <ul>
+      <li>High-performance computing systems</li>
+      <li>GPU cluster management and scheduling</li>
+      <li>Inference or training serving infrastructure</li>
+      <li>Driver or firmware architecture considerations</li>
+      <li>Networking for multi-GPU / multi-node systems</li>
+    </ul>
+    <p>Expect questions that blend classic distributed systems with hardware constraints and performance budgets.</p>
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I can design systems that account for GPU performance and hardware constraints</label></div>
+</section>
+
+<section id="domain" class="module">
+  <h2>5. Domain Expertise & Research</h2>
+  <div class="meta"><span>Time: 8–12 hours</span></div>
+  <div class="lesson">
+    <h3>Prepare for your target area</h3>
+    <ul>
+      <li>Read recent NVIDIA technical blogs, GTC talks, and papers relevant to the team</li>
+      <li>Understand current GPU generations and key architectural changes</li>
+      <li>Be ready to discuss past systems or performance work in depth</li>
+      <li>Know common tools: Nsight, profilers, CUDA debugging</li>
+    </ul>
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I researched the specific NVIDIA team and relevant technical domain</label></div>
+</section>
+
+<section id="behavioral" class="module">
+  <h2>6. Behavioral & Ownership</h2>
+  <div class="meta"><span>Time: 6–8 hours</span></div>
+  <div class="lesson">
+    <h3>Signals</h3>
+    <ul>
+      <li>Deep ownership of complex technical problems</li>
+      <li>Performance debugging and systematic problem solving</li>
+      <li>Collaboration with hardware and software teams</li>
+      <li>Clear communication of trade-offs</li>
+    </ul>
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I have strong stories around technical ownership and debugging hard systems issues</label></div>
+</section>
+
+<section id="job" class="module">
+  <h2>7. On the Job Excellence</h2>
+  <div class="meta"><span>Time: Ongoing</span></div>
+  <div class="lesson">
+    <h3>What strong engineers do at NVIDIA</h3>
+    <ul>
+      <li>Measure before optimizing — use profilers religiously</li>
+      <li>Understand the hardware deeply enough to guide software decisions</li>
+      <li>Write code that is both correct and performant under real constraints</li>
+      <li>Communicate clearly with firmware, hardware, and software partners</li>
+      <li>Document performance characteristics and failure modes</li>
+    </ul>
+    <div class="tip">Staff-level impact often comes from improving performance across a stack, fixing systemic issues, or influencing architecture decisions rather than just shipping individual features.</div>
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I understand how to approach performance and systems work at NVIDIA</label></div>
+</section>
+
+<section id="prep" class="module">
+  <h2>8. Full Preparation Plan</h2>
+  <div class="meta"><span>Time: Ongoing</span></div>
+  <div class="lesson">
+    <ol>
+      <li>Systems coding in C/C++ with concurrency focus (15–20 hrs)</li>
+      <li>GPU architecture and CUDA deep study + simple kernels (18–25 hrs)</li>
+      <li>System design with hardware constraints</li>
+      <li>Domain research on target team</li>
+      <li>Behavioral stories around ownership and debugging</li>
+      <li>Full mocks</li>
+    </ol>
+    <p>Resources: NVIDIA technical blogs, GTC presentations, CUDA documentation and programming guides, systems programming books.</p>
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I completed a full mock loop covering coding, GPU concepts, and behavioral</label></div>
+</section>
+
+<footer style="margin-top:3rem;color:var(--muted);font-size:0.85rem;text-align:center;">
+  NVIDIA course — Staff/Principal focused textbook-style guide. Progress saved in your browser.
+</footer>
+</main>
+</div>
+<script>
+const checks = document.querySelectorAll('.progress-check');
+const fill = document.getElementById('progressFill');
+const text = document.getElementById('progressText');
+function update() {
+  const done = [...checks].filter(c => c.checked).length;
+  const pct = checks.length ? Math.round((done / checks.length) * 100) : 0;
+  fill.style.width = pct + '%';
+  text.textContent = pct + '% complete (' + done + '/' + checks.length + ')';
+  localStorage.setItem('nvidiaProgress', JSON.stringify([...checks].map(c => c.checked)));
+}
+function load() {
+  const s = localStorage.getItem('nvidiaProgress');
+  if (s) {
+    const arr = JSON.parse(s);
+    checks.forEach((c, i) => { if (arr[i]) c.checked = true; });
+  }
+  update();
+}
+checks.forEach(c => c.addEventListener('change', update));
+function resetProgress() {
+  if (confirm('Reset all progress?')) {
+    checks.forEach(c => c.checked = false);
+    localStorage.removeItem('nvidiaProgress');
+    update();
+  }
+}
+function animateFlow(id) {
+  const boxes = document.querySelectorAll('#' + id + ' .box');
+  boxes.forEach(b => b.classList.remove('active'));
+  let i = 0;
+  const timer = setInterval(() => {
+    if (i < boxes.length) {
+      boxes[i].classList.add('active');
+      i++;
+    } else clearInterval(timer);
+  }, 450);
+}
+load();
+document.querySelectorAll('.nav-item').forEach(a => {
+  a.addEventListener('click', () => {
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    a.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

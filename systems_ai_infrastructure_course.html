@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Systems & AI Infrastructure Mastery — Common Deep Course</title>
+<style>
+:root { --bg:#0f1117; --sidebar:#161922; --card:#1c1f2a; --accent:#00d4aa; --accent2:#4285f4; --text:#e8eaed; --muted:#9aa0a6; --border:#2d313c; }
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:system-ui,sans-serif; background:var(--bg); color:var(--text); line-height:1.65; }
+.layout { display:flex; min-height:100vh; }
+.sidebar { width:290px; background:var(--sidebar); border-right:1px solid var(--border); padding:1.5rem 1rem; position:sticky; top:0; height:100vh; overflow-y:auto; }
+.sidebar h2 { font-size:1.05rem; margin-bottom:1rem; color:var(--accent); }
+.nav-item { display:block; padding:0.5rem 0.75rem; border-radius:8px; color:var(--text); text-decoration:none; margin-bottom:0.2rem; font-size:0.9rem; }
+.nav-item:hover,.nav-item.active { background:#252836; color:var(--accent); }
+.progress-box { margin-top:1.5rem; padding:1rem; background:#1a1d28; border-radius:10px; font-size:0.85rem; }
+.progress-bar { height:8px; background:#2d313c; border-radius:4px; margin:0.5rem 0; overflow:hidden; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--accent),var(--accent2)); width:0%; transition:width 0.3s; }
+main { flex:1; padding:2rem 2.5rem; max-width:1100px; }
+.module { background:var(--card); border-radius:12px; padding:1.6rem; margin-bottom:1.5rem; border:1px solid var(--border); }
+.module h2 { color:var(--accent); font-size:1.4rem; margin-bottom:0.5rem; }
+.meta { display:flex; gap:1rem; font-size:0.85rem; color:var(--muted); margin-bottom:1rem; }
+.meta span { background:#252836; padding:0.25rem 0.6rem; border-radius:6px; }
+.lesson { margin:1.2rem 0; padding:1rem; background:#161922; border-radius:8px; border-left:3px solid var(--accent); }
+.lesson h3 { font-size:1.1rem; margin-bottom:0.5rem; }
+.lesson ul,.lesson ol { margin:0.6rem 0 0.6rem 1.4rem; }
+.lesson li { margin:0.35rem 0; }
+.interview { background:#2a1f1a; border-left:3px solid #ff9f0a; padding:0.9rem 1rem; border-radius:6px; margin:0.9rem 0; }
+.tip { background:#1a2a1f; border-left:3px solid #34c759; padding:0.9rem 1rem; border-radius:6px; margin:0.9rem 0; }
+.check { margin:0.45rem 0; }
+.check input { margin-right:0.5rem; accent-color:var(--accent); }
+.anim-container { background:#0d0f14; border-radius:10px; padding:1rem; margin:1rem 0; border:1px solid #2a2e3a; }
+.anim-btn { background:#1e3a5f; color:var(--accent2); border:1px solid #2a4a7a; padding:0.45rem 0.9rem; border-radius:6px; cursor:pointer; margin:0.3rem 0.3rem 0.3rem 0; }
+.flow-box { display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap; margin:0.8rem 0; }
+.box { padding:0.55rem 1rem; background:#252836; border-radius:8px; border:2px solid #3a3f50; font-size:0.85rem; transition:all 0.4s; }
+.box.active { border-color:var(--accent); background:#1a2a3a; box-shadow:0 0 8px rgba(0,212,170,0.25); }
+@media (max-width:800px) { .layout{flex-direction:column;} .sidebar{width:100%;height:auto;position:relative;} main{padding:1.2rem;} }
+</style>
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar">
+  <h2>Systems & AI Infra</h2>
+  <a class="nav-item" href="#overview">1. Overview</a>
+  <a class="nav-item" href="#networking">2. Networking & Interconnects</a>
+  <a class="nav-item" href="#inference">3. Inference Serving</a>
+  <a class="nav-item" href="#embedded">4. Embedded, Firmware & Drivers</a>
+  <a class="nav-item" href="#robotics">5. Robotics & Real-Time</a>
+  <a class="nav-item" href="#codesign">6. HW/SW Co-design</a>
+  <a class="nav-item" href="#performance">7. Performance & Kernel</a>
+  <a class="nav-item" href="#job">8. On the Job</a>
+  <a class="nav-item" href="#prep">9. Prep Plan</a>
+  <div class="progress-box">
+    <strong>Your Progress</strong>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <div id="progressText">0% complete</div>
+    <button class="anim-btn" onclick="resetProgress()" style="margin-top:0.6rem;background:#3a1f1f;color:#ff6b6b;border:none;">Reset Progress</button>
+  </div>
+</aside>
+<main>
+<header>
+  <h1>Systems & AI Infrastructure Mastery</h1>
+  <p style="color:var(--muted);margin:0.4rem 0 1rem;">One large common textbook-style course covering the specialized skills that appear across NVIDIA, Google, Anthropic, Microsoft, GM, AWS, and related roles. Staff / Principal depth.</p>
+  <div style="color:var(--accent);font-size:1.05rem;">Recommended focused time: 100–140 hours (now at strong Staff/Principal depth)</div>
+</header>
+
+<section id="overview" class="module">
+  <h2>1. Overview</h2>
+  <div class="meta"><span>Time: 4–6 hours</span></div>
+  <div class="lesson">
+    <h3>What this course covers</h3>
+    <ul>
+      <li>High-performance networking and AI interconnects</li>
+      <li>Inference serving systems (Triton, Dynamo-style, cloud inference)</li>
+      <li>Embedded systems, firmware, and drivers</li>
+      <li>Robotics platforms and real-time systems</li>
+      <li>Hardware/software co-design and accelerator platforms</li>
+      <li>Performance engineering, kernel, and low-level optimization</li>
+    </ul>
+    <p>These skills show up repeatedly in Senior / Staff / Principal roles at NVIDIA, Google, Anthropic, Microsoft, AWS, GM, and others. Master them once and apply them across companies. Content is written at strong Staff/Principal depth with failure modes, measurement strategies, and production trade-offs.</p>
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I understand the scope and how this course complements company-specific interview prep</label></div>
+</section>
+
+<section id="networking" class="module">
+  <h2>2. Networking & High-Performance Interconnects</h2>
+  <div class="meta"><span>Time: 14–18 hours</span></div>
+  <div class="lesson">
+    <h3>Core concepts</h3>
+    <ul>
+      <li>Network fundamentals: latency, bandwidth, congestion, flow control</li>
+      <li>RDMA, InfiniBand, and GPUDirect-style interconnects</li>
+      <li>Collective communication (all-reduce, all-gather) and how they map to network topology</li>
+      <li>Topology awareness (fat-tree, dragonfly, etc.) and its impact on training jobs</li>
+      <li>Network observability, telemetry, and debugging</li>
+      <li>Multi-tenant networking and isolation</li>
+    </ul>
+  </div>
+  <div class="lesson">
+    <h3>Staff-level depth</h3>
+    <ul>
+      <li>How collective algorithms (ring, tree, hierarchical) perform under different topologies and failure conditions</li>
+      <li>Congestion control mechanisms and their interaction with AI traffic patterns</li>
+      <li>In-network computing and where it helps or hurts</li>
+      <li>Diagnosing and mitigating stragglers caused by network imbalance</li>
+      <li>Capacity planning: oversubscription ratios, bisection bandwidth, and cost trade-offs</li>
+      <li>Security and isolation implications of high-performance fabrics</li>
+    </ul>
+    <p>Strong candidates can reason about what breaks at scale, quantify trade-offs, and propose measurement-driven improvements rather than generic designs.</p>
+  </div>
+  <div class="interview">
+    <strong>Interview Practice — Networking</strong><br><br>
+    <strong>Question 1:</strong> How would you design a network for a large GPU cluster to minimize all-reduce time?<br>
+    <em>Approach:</em> Clarify scale and topology constraints. Discuss fat-tree or dragonfly. Explain how collective algorithms (ring, tree, recursive doubling) interact with topology. Mention RDMA and congestion control.<br>
+    <em>Follow-ups:</em> What happens if one link fails? How do you handle multi-tenant interference?<br><br>
+    <strong>Question 2:</strong> Explain the difference between TCP and RDMA for AI workloads.<br>
+    <em>Approach:</em> TCP has higher latency and CPU overhead. RDMA enables kernel bypass and low latency. Discuss when each is appropriate and GPUDirect-style paths.<br>
+    <em>Follow-up:</em> How would you debug a training job that is network-bound?
+  </div>
+  <div class="anim-container">
+    <h4>Animation: Collective Communication Path</h4>
+    <div class="flow-box" id="netFlow">
+      <div class="box">GPUs</div><span>→</span>
+      <div class="box">NIC / RDMA</div><span>→</span>
+      <div class="box">Switch Fabric</div><span>→</span>
+      <div class="box">Collective Algorithm</div><span>→</span>
+      <div class="box">Completion</div>
+    </div>
+    <button class="anim-btn" onclick="animateFlow('netFlow')">Animate Path</button>
+    <p style="margin-top:0.6rem;font-size:0.85rem;color:var(--muted);">Watch how data moves from GPUs through RDMA NICs and the fabric during a collective operation.</p>
+  </div>
+  <div class="tip">
+    <strong>Recommended videos</strong><br>
+    • NVIDIA GTC talks on InfiniBand and GPU networking<br>
+    • “RDMA Programming” overview talks (search GTC or academic lectures)<br>
+    • Papers and talks on collective communication optimization for training
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I practiced the networking design questions and can explain RDMA vs TCP trade-offs</label></div>
+</section>
+
+<section id="inference" class="module">
+  <h2>3. Inference Serving Systems</h2>
+  <div class="meta"><span>Time: 14–18 hours</span></div>
+  <div class="lesson">
+    <h3>Key topics</h3>
+    <ul>
+      <li>Batching strategies: static, dynamic, continuous batching</li>
+      <li>KV-cache management and memory pressure</li>
+      <li>Request routing, load balancing, and model parallelism for serving</li>
+      <li>Latency vs throughput trade-offs</li>
+      <li>Multi-model and multi-tenant serving</li>
+      <li>Systems like Triton, Dynamo, and custom serving stacks</li>
+      <li>Failure handling, autoscaling, and SLO management</li>
+    </ul>
+  </div>
+  <div class="lesson">
+    <h3>Staff-level depth</h3>
+    <ul>
+      <li>How continuous batching interacts with prefill vs decode phases and memory fragmentation</li>
+      <li>Speculative decoding, prefix caching, and other advanced serving optimizations</li>
+      <li>Multi-node inference and tensor/pipeline parallelism for serving</li>
+      <li>Admission control, priority, and fairness under overload</li>
+      <li>Observability: tracing request latency breakdowns and GPU utilization metrics</li>
+      <li>Cost-aware serving: when to scale vs optimize, and failure domains</li>
+    </ul>
+    <p>Strong answers include concrete failure modes (OOM, hot keys, version skew), measurement strategy, and how you would iterate on the system in production.</p>
+  </div>
+  <div class="interview">
+    <strong>Interview Practice — Inference Serving</strong><br><br>
+    <strong>Question:</strong> Design an inference serving system that keeps p99 latency low while maximizing GPU utilization across variable request sizes and multiple model versions.<br>
+    <em>Approach:</em> Clarify latency SLOs and traffic patterns. Discuss continuous batching, KV-cache management, request routing, and model loading. Address memory pressure and failure isolation.<br>
+    <em>Follow-ups:</em> How do you handle a sudden traffic spike? What happens if a model version has a memory leak? How do you measure and improve utilization?
+  </div>
+  <div class="anim-container">
+    <h4>Animation: Inference Request Path</h4>
+    <div class="flow-box" id="infFlow">
+      <div class="box">Request</div><span>→</span>
+      <div class="box">Router</div><span>→</span>
+      <div class="box">Batcher</div><span>→</span>
+      <div class="box">GPU / KV-Cache</div><span>→</span>
+      <div class="box">Response</div>
+    </div>
+    <button class="anim-btn" onclick="animateFlow('infFlow')">Animate Request Path</button>
+  </div>
+  <div class="tip">
+    <strong>Recommended videos</strong><br>
+    • NVIDIA Triton Inference Server architecture talks<br>
+    • Talks on continuous batching and KV-cache optimization for LLMs<br>
+    • System design videos on low-latency serving
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I practiced the inference serving design question and can discuss batching and KV-cache trade-offs</label></div>
+</section>
+
+<section id="embedded" class="module">
+  <h2>4. Embedded Systems, Firmware & Drivers</h2>
+  <div class="meta"><span>Time: 15–20 hours</span></div>
+  <div class="lesson">
+    <h3>Core areas</h3>
+    <ul>
+      <li>Real-time constraints and deterministic behavior</li>
+      <li>Device drivers: interrupt handling, DMA, memory-mapped I/O</li>
+      <li>Firmware architecture and update mechanisms (OTA safety)</li>
+      <li>Power, thermal, and resource constraints</li>
+      <li>Linux kernel concepts relevant to drivers and platforms</li>
+      <li>Debugging on embedded targets</li>
+    </ul>
+  </div>
+  <div class="lesson">
+    <h3>Staff-level depth</h3>
+    <ul>
+      <li>Locking, RCU, and concurrency models in drivers</li>
+      <li>Power management and runtime PM interactions with latency</li>
+      <li>Safe OTA design including validation, atomicity, and fleet rollout strategy</li>
+      <li>Debugging intermittent failures on resource-constrained devices</li>
+      <li>Co-design with hardware teams on interrupt and DMA requirements</li>
+    </ul>
+  </div>
+  <div class="interview">
+    <strong>Interview Practice — Embedded / Drivers</strong><br><br>
+    <strong>Question 1:</strong> Explain how a device driver handles interrupts and DMA.<br>
+    <em>Approach:</em> Describe top-half / bottom-half, interrupt context constraints, DMA mapping, and completion handling. Mention error paths and power management.<br>
+    <em>Follow-up:</em> How would you debug a driver that occasionally drops data under load?<br><br>
+    <strong>Question 2:</strong> Design a firmware update mechanism that is safe under power loss.<br>
+    <em>Approach:</em> Dual-bank or A/B updates, atomic commit, validation, and rollback. Discuss what happens if power is lost mid-write.
+  </div>
+  <div class="anim-container">
+    <h4>Animation: Interrupt & DMA Flow</h4>
+    <div class="flow-box" id="embFlow">
+      <div class="box">Device Event</div><span>→</span>
+      <div class="box">Interrupt</div><span>→</span>
+      <div class="box">Top Half</div><span>→</span>
+      <div class="box">DMA / Bottom Half</div><span>→</span>
+      <div class="box">Completion</div>
+    </div>
+    <button class="anim-btn" onclick="animateFlow('embFlow')">Animate</button>
+  </div>
+  <div class="tip">
+    <strong>Recommended videos</strong><br>
+    • Linux kernel driver development talks (LWN, kernel.org related)<br>
+    • Embedded systems real-time lectures<br>
+    • OTA and firmware safety presentations from automotive or IoT vendors
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I practiced driver and firmware questions and can explain interrupt/DMA flow</label></div>
+</section>
+
+<section id="robotics" class="module">
+  <h2>5. Robotics Platforms & Real-Time Systems</h2>
+  <div class="meta"><span>Time: 12–16 hours</span></div>
+  <div class="lesson">
+    <h3>Key concepts</h3>
+    <ul>
+      <li>Perception → planning → control pipelines</li>
+      <li>Sensor fusion and timing</li>
+      <li>Real-time scheduling and latency budgets</li>
+      <li>Safety, redundancy, and fail-operational design</li>
+      <li>Robot-as-a-Service platform considerations (fleet management, OTA, monitoring)</li>
+      <li>Simulation and hardware-in-the-loop testing</li>
+    </ul>
+  </div>
+  <div class="lesson">
+    <h3>Staff-level depth</h3>
+    <ul>
+      <li>End-to-end latency budgeting and worst-case execution time analysis</li>
+      <li>Failure mode and effects analysis for safety-critical paths</li>
+      <li>Fleet-scale data collection, simulation fidelity, and validation strategy</li>
+      <li>Trade-offs between on-robot compute and cloud offload</li>
+    </ul>
+  </div>
+  <div class="interview">
+    <strong>Interview Practice — Robotics</strong><br><br>
+    <strong>Question:</strong> Design the software architecture for a robot platform that must meet strict control-loop latency while supporting fleet updates and remote monitoring.<br>
+    <em>Approach:</em> Separate real-time control path from non-real-time services. Discuss sensor fusion timing, safety monitors, OTA strategy, and telemetry. Address failure isolation.<br>
+    <em>Follow-ups:</em> What happens if a sensor fails? How do you validate a software update on a fleet?
+  </div>
+  <div class="anim-container">
+    <h4>Animation: Perception-to-Action Loop</h4>
+    <div class="flow-box" id="robFlow">
+      <div class="box">Sensors</div><span>→</span>
+      <div class="box">Perception</div><span>→</span>
+      <div class="box">Planning</div><span>→</span>
+      <div class="box">Control</div><span>→</span>
+      <div class="box">Actuators</div>
+    </div>
+    <button class="anim-btn" onclick="animateFlow('robFlow')">Animate Loop</button>
+  </div>
+  <div class="tip">
+    <strong>Recommended videos</strong><br>
+    • Robotics software architecture talks (ROS2, real-time systems)<br>
+    • Autonomous vehicle or robot platform engineering presentations<br>
+    • Safety-critical systems lectures
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I practiced the robotics architecture question and can discuss latency and safety trade-offs</label></div>
+</section>
+
+<section id="codesign" class="module">
+  <h2>6. Hardware/Software Co-design & Accelerators</h2>
+  <div class="meta"><span>Time: 12–16 hours</span></div>
+  <div class="lesson">
+    <h3>Topics</h3>
+    <ul>
+      <li>How software decisions affect hardware utilization and vice versa</li>
+      <li>Accelerator programming models and performance models</li>
+      <li>Memory hierarchy awareness (on-chip vs off-chip)</li>
+      <li>Compiler and runtime co-design</li>
+      <li>Profiling and optimization loops between hardware and software teams</li>
+    </ul>
+  </div>
+  <div class="interview">
+    <strong>Interview Practice — HW/SW Co-design</strong><br><br>
+    <strong>Question:</strong> How would you improve the performance of a workload that is currently memory-bound on an accelerator?<br>
+    <em>Approach:</em> Profile first. Discuss data layout, tiling, memory hierarchy usage, and whether the bottleneck is hardware or software. Propose experiments and trade-offs.<br>
+    <em>Follow-up:</em> How would you work with the hardware team if a change is needed?
+  </div>
+  <div class="anim-container">
+    <h4>Animation: Co-design Feedback Loop</h4>
+    <div class="flow-box" id="codeFlow">
+      <div class="box">Profile</div><span>→</span>
+      <div class="box">Identify Bottleneck</div><span>→</span>
+      <div class="box">Software Change</div><span>→</span>
+      <div class="box">Hardware Insight</div><span>→</span>
+      <div class="box">Iterate</div>
+    </div>
+    <button class="anim-btn" onclick="animateFlow('codeFlow')">Animate</button>
+  </div>
+  <div class="tip">
+    <strong>Recommended videos</strong><br>
+    • GPU architecture and performance optimization talks (GTC)<br>
+    • Compiler and runtime co-design presentations<br>
+    • Accelerator programming model overviews
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I practiced co-design reasoning and can discuss memory hierarchy and profiling</label></div>
+</section>
+
+<section id="performance" class="module">
+  <h2>7. Performance Engineering & Kernel</h2>
+  <div class="meta"><span>Time: 12–16 hours</span></div>
+  <div class="lesson">
+    <h3>Focus areas</h3>
+    <ul>
+      <li>Profiling methodology (measure first)</li>
+      <li>CPU and GPU performance counters</li>
+      <li>Cache behavior, memory bandwidth, and instruction-level optimization</li>
+      <li>Kernel-level performance issues (scheduling, interrupts, locking)</li>
+      <li>Math libraries and low-level optimization</li>
+      <li>Systematic approach to performance regressions</li>
+    </ul>
+  </div>
+  <div class="interview">
+    <strong>Interview Practice — Performance</strong><br><br>
+    <strong>Question:</strong> A system is slower than expected. Walk through how you would diagnose whether the bottleneck is compute, memory, network, or software overhead.<br>
+    <em>Approach:</em> Establish baseline. Use profilers and counters. Isolate layers with experiments. Measure before and after changes. Discuss common pitfalls.<br>
+    <em>Follow-up:</em> How do you prevent the same regression in the future?
+  </div>
+  <div class="anim-container">
+    <h4>Animation: Performance Diagnosis Flow</h4>
+    <div class="flow-box" id="perfFlow">
+      <div class="box">Baseline</div><span>→</span>
+      <div class="box">Profile</div><span>→</span>
+      <div class="box">Isolate Layer</div><span>→</span>
+      <div class="box">Experiment</div><span>→</span>
+      <div class="box">Verify</div>
+    </div>
+    <button class="anim-btn" onclick="animateFlow('perfFlow')">Animate</button>
+  </div>
+  <div class="tip">
+    <strong>Recommended videos</strong><br>
+    • Performance analysis and profiling tutorials (Nsight, perf, etc.)<br>
+    • Kernel and systems performance talks<br>
+    • Case studies on debugging large-scale performance issues
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I practiced the performance diagnosis approach and can walk through it clearly</label></div>
+</section>
+
+<section id="job" class="module">
+  <h2>8. On the Job Excellence</h2>
+  <div class="meta"><span>Time: Ongoing</span></div>
+  <div class="lesson">
+    <h3>What strong engineers do in these domains</h3>
+    <ul>
+      <li>Measure rigorously before changing systems</li>
+      <li>Design for failure and observability from the start</li>
+      <li>Communicate trade-offs clearly across hardware, software, and product teams</li>
+      <li>Document performance characteristics and failure modes</li>
+      <li>Influence architecture decisions with data</li>
+    </ul>
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I understand how to operate effectively in systems and AI infrastructure roles</label></div>
+</section>
+
+<section id="prep" class="module">
+  <h2>9. Full Preparation Plan</h2>
+  <div class="meta"><span>Time: Ongoing</span></div>
+  <div class="lesson">
+    <ol>
+      <li>Networking & interconnects (14–18 hrs)</li>
+      <li>Inference serving systems (14–18 hrs)</li>
+      <li>Embedded, firmware & drivers (15–20 hrs)</li>
+      <li>Robotics & real-time systems (12–16 hrs)</li>
+      <li>HW/SW co-design (12–16 hrs)</li>
+      <li>Performance engineering (12–16 hrs)</li>
+      <li>Combine with company-specific interview practice</li>
+    </ol>
+    <div class="tip">Study this common course for technical depth, then use the company courses for process, behavioral, and company-specific framing.</div>
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I completed the major modules and can discuss them in interview settings</label></div>
+</section>
+
+<footer style="margin-top:3rem;color:var(--muted);font-size:0.85rem;text-align:center;">
+  Systems & AI Infrastructure common course. Progress saved in your browser. Complements company-specific courses.
+</footer>
+</main>
+</div>
+<script>
+const checks = document.querySelectorAll('.progress-check');
+const fill = document.getElementById('progressFill');
+const text = document.getElementById('progressText');
+function update() {
+  const done = [...checks].filter(c => c.checked).length;
+  const pct = checks.length ? Math.round((done / checks.length) * 100) : 0;
+  fill.style.width = pct + '%';
+  text.textContent = pct + '% complete (' + done + '/' + checks.length + ')';
+  localStorage.setItem('systemsInfraProgress', JSON.stringify([...checks].map(c => c.checked)));
+}
+function load() {
+  const s = localStorage.getItem('systemsInfraProgress');
+  if (s) {
+    const arr = JSON.parse(s);
+    checks.forEach((c, i) => { if (arr[i]) c.checked = true; });
+  }
+  update();
+}
+checks.forEach(c => c.addEventListener('change', update));
+function resetProgress() {
+  if (confirm('Reset all progress?')) {
+    checks.forEach(c => c.checked = false);
+    localStorage.removeItem('systemsInfraProgress');
+    update();
+  }
+}
+function animateFlow(id) {
+  const boxes = document.querySelectorAll('#' + id + ' .box');
+  boxes.forEach(b => b.classList.remove('active'));
+  let i = 0;
+  const timer = setInterval(() => {
+    if (i < boxes.length) {
+      boxes[i].classList.add('active');
+      i++;
+    } else clearInterval(timer);
+  }, 450);
+}
+load();
+document.querySelectorAll('.nav-item').forEach(a => {
+  a.addEventListener('click', () => {
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    a.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
