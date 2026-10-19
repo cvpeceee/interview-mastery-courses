@@ -74,37 +74,89 @@ main { flex:1; padding:2rem 2.5rem; max-width:960px; }
   <div class="check"><label><input type="checkbox" class="progress-check"> I understand OpenAI’s process and the importance of AI perspective</label></div>
 </section>
 
-<!-- Truncated for this call; full file will be pushed in next steps if needed -->
-<p>Full course content is being published. Open the file in browser for complete modules.</p>
-</main></div>
+<section id="coding" class="module">
+  <h2>2. Coding Preparation</h2>
+  <div class="meta"><span>Time: 15–18 hours</span></div>
+  <div class="lesson">
+    <h3>Style</h3>
+    <ul>
+      <li>Practical, multi-stage problems (build something real, then extend)</li>
+      <li>High bar on correctness and adaptability</li>
+      <li>Python or strong systems language</li>
+    </ul>
+    <div class="interview"><strong>Example style:</strong> Implement a key-value store with progressive features (TTL, persistence, etc.).</div>
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I practiced progressive, practical coding problems</label></div>
+</section>
+
+<section id="design" class="module">
+  <h2>3. System Design</h2>
+  <div class="meta"><span>Time: 10–14 hours</span></div>
+  <div class="lesson">
+    <h3>AI-relevant designs</h3>
+    <ul>
+      <li>Inference serving, job schedulers, training pipelines</li>
+      <li>Reliability, latency, and scale under AI workloads</li>
+      <li>Clarify requirements deeply</li>
+    </ul>
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I can design AI infrastructure systems with clear trade-offs</label></div>
+</section>
+
+<section id="behavioral" class="module">
+  <h2>4. Behavioral & AI Perspective</h2>
+  <div class="meta"><span>Time: 6–8 hours</span></div>
+  <div class="lesson">
+    <h3>Key signals</h3>
+    <ul>
+      <li>Deep ownership of past projects</li>
+      <li>Thoughtful view on AI impact and direction</li>
+      <li>Collaboration and judgment</li>
+    </ul>
+    <div class="tip">Prepare a genuine answer for “Why OpenAI?” and be ready for deep project discussion.</div>
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I have strong project stories and a clear AI perspective</label></div>
+</section>
+
+<section id="prep" class="module">
+  <h2>5. Preparation Plan</h2>
+  <div class="meta"><span>Time: Ongoing</span></div>
+  <div class="lesson">
+    <ol>
+      <li>Practical progressive coding</li>
+      <li>AI-related system design</li>
+      <li>Deep project stories + AI viewpoint</li>
+      <li>Mocks</li>
+    </ol>
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I completed full mock loops</label></div>
+</section>
+
+<footer style="margin-top:2rem;color:var(--muted);font-size:0.85rem;text-align:center;">
+  OpenAI course — Staff/Principal focused. Progress saved locally.
+</footer>
+</main>
+</div>
 <script>
 const checks = document.querySelectorAll('.progress-check');
 const fill = document.getElementById('progressFill');
 const text = document.getElementById('progressText');
 function update() {
-  const done = [...checks].filter(c => c.checked).length;
-  const pct = checks.length ? Math.round((done / checks.length) * 100) : 0;
-  fill.style.width = pct + '%';
-  text.textContent = pct + '% complete (' + done + '/' + checks.length + ')';
-  localStorage.setItem('openaiProgress', JSON.stringify([...checks].map(c => c.checked)));
+  const done = [...checks].filter(c=>c.checked).length;
+  const pct = Math.round((done/checks.length)*100);
+  fill.style.width = pct+'%';
+  text.textContent = pct+'% ('+done+'/'+checks.length+')';
+  localStorage.setItem('openaiProgress', JSON.stringify([...checks].map(c=>c.checked)));
 }
 function load() {
   const s = localStorage.getItem('openaiProgress');
-  if (s) {
-    const arr = JSON.parse(s);
-    checks.forEach((c, i) => { if (arr[i]) c.checked = true; });
-  }
+  if(s) JSON.parse(s).forEach((v,i)=>{ if(checks[i]) checks[i].checked=v; });
   update();
 }
-checks.forEach(c => c.addEventListener('change', update));
-function resetProgress() {
-  if (confirm('Reset all progress?')) {
-    checks.forEach(c => c.checked = false);
-    localStorage.removeItem('openaiProgress');
-    update();
-  }
-}
+checks.forEach(c=>c.addEventListener('change',update));
+function resetProgress(){ if(confirm('Reset?')){ checks.forEach(c=>c.checked=false); localStorage.removeItem('openaiProgress'); update(); } }
 load();
+document.querySelectorAll('.nav-item').forEach(a=>a.addEventListener('click',()=>{ document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active')); a.classList.add('active'); }));
 </script>
 </body>
 </html>

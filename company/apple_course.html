@@ -3,15 +3,289 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Apple Software Engineer Interview Mastery</title>
-<style>body{font-family:system-ui;background:#0f1117;color:#e8eaed;padding:2rem;} .module{background:#1c1f2a;border-radius:12px;padding:1.5rem;margin:1rem 0;}</style>
+<title>Apple Software Engineer Interview Mastery — Staff / Principal Level</title>
+<style>
+:root { --bg:#0f1117; --sidebar:#161922; --card:#1c1f2a; --accent:#0071e3; --accent2:#00d4aa; --text:#e8eaed; --muted:#9aa0a6; --border:#2d313c; }
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:system-ui,sans-serif; background:var(--bg); color:var(--text); line-height:1.65; }
+.layout { display:flex; min-height:100vh; }
+.sidebar { width:270px; background:var(--sidebar); border-right:1px solid var(--border); padding:1.5rem 1rem; position:sticky; top:0; height:100vh; overflow-y:auto; }
+.sidebar h2 { font-size:1.05rem; margin-bottom:1rem; color:var(--accent); }
+.nav-item { display:block; padding:0.5rem 0.75rem; border-radius:8px; color:var(--text); text-decoration:none; margin-bottom:0.2rem; font-size:0.9rem; }
+.nav-item:hover,.nav-item.active { background:#252836; color:var(--accent); }
+.progress-box { margin-top:1.5rem; padding:1rem; background:#1a1d28; border-radius:10px; font-size:0.85rem; }
+.progress-bar { height:8px; background:#2d313c; border-radius:4px; margin:0.5rem 0; overflow:hidden; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--accent),var(--accent2)); width:0%; transition:width 0.3s; }
+main { flex:1; padding:2rem 2.5rem; max-width:1000px; }
+.module { background:var(--card); border-radius:12px; padding:1.6rem; margin-bottom:1.5rem; border:1px solid var(--border); }
+.module h2 { color:var(--accent); font-size:1.4rem; margin-bottom:0.5rem; }
+.meta { display:flex; gap:1rem; font-size:0.85rem; color:var(--muted); margin-bottom:1rem; }
+.meta span { background:#252836; padding:0.25rem 0.6rem; border-radius:6px; }
+.lesson { margin:1.2rem 0; padding:1rem; background:#161922; border-radius:8px; border-left:3px solid var(--accent); }
+.lesson h3 { font-size:1.1rem; margin-bottom:0.5rem; }
+.lesson ul,.lesson ol { margin:0.6rem 0 0.6rem 1.4rem; }
+.lesson li { margin:0.35rem 0; }
+.interview { background:#2a1f1a; border-left:3px solid #ff9f0a; padding:0.9rem 1rem; border-radius:6px; margin:0.9rem 0; }
+.tip { background:#1a2a1f; border-left:3px solid #34c759; padding:0.9rem 1rem; border-radius:6px; margin:0.9rem 0; }
+.code { background:#0d0f14; padding:1rem; border-radius:8px; overflow-x:auto; font-family:monospace; font-size:0.88rem; margin:0.8rem 0; border:1px solid #2a2e3a; }
+.check { margin:0.45rem 0; }
+.check input { margin-right:0.5rem; accent-color:var(--accent); }
+.anim-container { background:#0d0f14; border-radius:10px; padding:1rem; margin:1rem 0; border:1px solid #2a2e3a; }
+.anim-btn { background:#1e3a5f; color:var(--accent2); border:1px solid #2a4a7a; padding:0.45rem 0.9rem; border-radius:6px; cursor:pointer; margin:0.3rem 0.3rem 0.3rem 0; }
+.flow-box { display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap; margin:0.8rem 0; }
+.box { padding:0.55rem 1rem; background:#252836; border-radius:8px; border:2px solid #3a3f50; font-size:0.85rem; transition:all 0.4s; }
+.box.active { border-color:var(--accent); background:#1a2a3a; box-shadow:0 0 10px rgba(0,113,227,0.3); }
+@media (max-width:800px) { .layout{flex-direction:column;} .sidebar{width:100%;height:auto;position:relative;} main{padding:1.2rem;} }
+</style>
 </head>
 <body>
-<h1>Apple Course</h1>
-<div class="module">
-<h2>Clean code, privacy-first & offline design, team-specific domain depth</h2>
-<p>Staff / Principal level. Full interactive textbook version is in the interview-mastery-courses.tar.gz archive.</p>
-<p>Open the complete file from the archive for modules, interview practice, and progress tracking.</p>
+<div class="layout">
+<aside class="sidebar">
+  <h2>Apple Course</h2>
+  <a class="nav-item" href="#process">1. Process & Levels</a>
+  <a class="nav-item" href="#coding">2. Coding Deep Dive</a>
+  <a class="nav-item" href="#design">3. System / Domain Design</a>
+  <a class="nav-item" href="#domain">4. Domain & Hardware-SW</a>
+  <a class="nav-item" href="#behavioral">5. Behavioral & Why Apple</a>
+  <a class="nav-item" href="#prep">6. Full Prep Plan</a>
+  <div class="progress-box">
+    <strong>Your Progress</strong>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <div id="progressText">0% complete</div>
+    <button class="anim-btn" onclick="resetProgress()" style="margin-top:0.6rem;background:#3a1f1f;color:#ff6b6b;border:none;">Reset Progress</button>
+  </div>
+</aside>
+<main>
+<header>
+  <h1>Apple Software Engineer Interview Mastery</h1>
+  <p style="color:var(--muted);margin:0.4rem 0 1rem;">Staff / Principal (ICT4–ICT5+) level preparation. Emphasis on clean production code, privacy-first and resource-constrained design, team-specific domain depth, and craftsmanship.</p>
+  <div style="color:var(--accent2);font-size:1.05rem;">Recommended focused time: 50–70 hours</div>
+</header>
+
+<section id="process" class="module">
+  <h2>1. Interview Process & Levels</h2>
+  <div class="meta"><span>Time: 5–7 hours</span></div>
+  <div class="lesson">
+    <h3>Typical process (highly team-dependent)</h3>
+    <ul>
+      <li><strong>Recruiter screen</strong> (15–30 min) — background, logistics, “Why Apple?”</li>
+      <li><strong>Hiring manager conversation</strong> — past projects, team fit, sometimes light technical discussion</li>
+      <li><strong>Technical phone screen(s)</strong> (1–2 × 45–60 min) — live coding on CoderPad</li>
+      <li><strong>Onsite / virtual loop</strong> (4–8 rounds × 45–60 min) — coding, design, domain deep-dive, behavioral</li>
+      <li>Some teams include a project presentation or final manager round</li>
+    </ul>
+    <p>Apple loops are owned by the hiring team. Two candidates interviewing for different teams can have very different experiences. Research the specific team thoroughly.</p>
+  </div>
+  <div class="lesson">
+    <h3>Levels (approximate)</h3>
+    <ul>
+      <li><strong>ICT2</strong> — New grad / early career. Mostly coding, light behavioral.</li>
+      <li><strong>ICT3</strong> — 2–4 years. Coding + some design or domain.</li>
+      <li><strong>ICT4</strong> — Senior. Strong coding, design, domain depth, ownership stories.</li>
+      <li><strong>ICT5+</strong> — Staff / Principal. Deeper design, technical leadership, cross-team influence, long-term architecture thinking.</li>
+    </ul>
+    <div class="tip">For staff/principal roles, expect harder probes on trade-offs, failure modes, and how you influence other teams or hardware partners.</div>
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I understand Apple’s team-driven process and level expectations</label></div>
+</section>
+
+<section id="coding" class="module">
+  <h2>2. Coding Interview Deep Dive</h2>
+  <div class="meta"><span>Time: 18–25 hours</span></div>
+  <div class="lesson">
+    <h3>What Apple actually evaluates</h3>
+    <ul>
+      <li>Correctness and completeness (edge cases matter a lot)</li>
+      <li>Code quality: clear naming, structure, readability — more weight than at Google/Meta</li>
+      <li>Practical framing rather than pure puzzle tricks</li>
+      <li>Concurrency and thread-safety questions appear more frequently</li>
+      <li>Ability to discuss performance and production concerns</li>
+    </ul>
+  </div>
+  <div class="lesson">
+    <h3>High-frequency patterns</h3>
+    <ul>
+      <li>Arrays, strings, hash maps</li>
+      <li>Trees (especially for UI / hierarchy problems)</li>
+      <li>Graphs (BFS/DFS with constraints)</li>
+      <li>Parsing and nested structures</li>
+      <li>Concurrency: thread-safe data structures, producer-consumer, GCD-style thinking for iOS teams</li>
+      <li>Classic structures: LRU cache, rate limiter, etc.</li>
+    </ul>
+  </div>
+  <div class="interview">
+    <strong>Example 1 — LRU Cache (common follow-up style)</strong><br>
+    Implement an LRU cache with O(1) get and put.<br>
+    Follow-ups Apple interviewers often ask:<br>
+    • How would you reduce write amplification if every read updates recency?<br>
+    • Discuss approximate LRU (CLOCK, sampling).<br>
+    • Thread-safety if multiple threads access it.<br><br>
+    <strong>Example 2 — HTML / nested structure parser</strong><br>
+    Build a simple parser that handles nested tags or expressions. Focus on clean recursion or stack usage and clear error handling.
+  </div>
+  <div class="anim-container">
+    <h4>Animation: Apple Coding Approach</h4>
+    <div class="flow-box" id="codeFlow">
+      <div class="box">Clarify requirements</div><span>→</span>
+      <div class="box">Discuss approach & edge cases</div><span>→</span>
+      <div class="box">Write clean code</div><span>→</span>
+      <div class="box">Walk through examples</div><span>→</span>
+      <div class="box">Discuss production concerns</div>
+    </div>
+    <button class="anim-btn" onclick="animateFlow('codeFlow')">Animate Approach</button>
+  </div>
+  <div class="tip">Practice writing code that a teammate could review without questions. Name variables clearly. Handle empty inputs, nulls, and boundary conditions explicitly. After the solution works, mention concurrency or performance if relevant.</div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I practiced 40+ medium problems with strong focus on clean code and edge cases</label></div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I implemented and can discuss LRU cache, parsers, and thread-safe structures</label></div>
+</section>
+
+<section id="design" class="module">
+  <h2>3. System / Domain Design</h2>
+  <div class="meta"><span>Time: 12–18 hours</span></div>
+  <div class="lesson">
+    <h3>Apple design is often product- or domain-grounded</h3>
+    <p>Unlike pure planetary-scale distributed systems interviews, Apple design rounds frequently tie to real product constraints: offline behavior, privacy, battery, storage limits, and sync.</p>
+  </div>
+  <div class="lesson">
+    <h3>Common design themes</h3>
+    <ul>
+      <li><strong>Offline-first / sync</strong> — iCloud Photos style: local edits, conflict resolution, eventual consistency, bandwidth awareness</li>
+      <li><strong>Push notifications</strong> — APNs-like system: reliability, delivery guarantees, battery impact, priority</li>
+      <li><strong>On-device constraints</strong> — privacy, limited storage/compute, power</li>
+      <li><strong>API / component design</strong> for client or framework teams</li>
+      <li>Services teams may ask more traditional distributed systems</li>
+    </ul>
+  </div>
+  <div class="interview">
+    <strong>Walkthrough example: Photo Sync (iCloud-style)</strong><br>
+    Clarify: offline edits allowed? Conflict resolution strategy? Bandwidth limits? Privacy requirements?<br>
+    Design points:<br>
+    • Local store + operation log<br>
+    • Sync protocol that handles intermittent connectivity<br>
+    • Conflict resolution (last-write-wins, or user-visible merge)<br>
+    • Delta uploads / downloads to save bandwidth<br>
+    • Privacy: encryption at rest and in transit<br>
+    Discuss failure modes: partial sync, device lost, concurrent edits from multiple devices.
+  </div>
+  <div class="anim-container">
+    <h4>Animation: Design Thinking Flow</h4>
+    <div class="flow-box" id="designFlow">
+      <div class="box">Clarify constraints</div><span>→</span>
+      <div class="box">Requirements & scale</div><span>→</span>
+      <div class="box">High-level design</div><span>→</span>
+      <div class="box">Deep dive (sync / privacy)</div><span>→</span>
+      <div class="box">Failure modes</div>
+    </div>
+    <button class="anim-btn" onclick="animateFlow('designFlow')">Animate</button>
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I can design offline-sync and notification systems with privacy and resource trade-offs</label></div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I practiced clarifying constraints before proposing architecture</label></div>
+</section>
+
+<section id="domain" class="module">
+  <h2>4. Domain Depth & Hardware-Software Integration</h2>
+  <div class="meta"><span>Time: 8–12 hours</span></div>
+  <div class="lesson">
+    <h3>Prepare for team-specific deep dives</h3>
+    <ul>
+      <li><strong>Apple Intelligence / on-device ML</strong> — inference optimization, privacy-preserving techniques, model size vs quality trade-offs</li>
+      <li><strong>Platforms / OS</strong> — concurrency (GCD), memory management, framework internals</li>
+      <li><strong>Services</strong> — scalable backends with strong consistency or availability needs</li>
+      <li><strong>Graphics / media</strong> — pipelines, performance</li>
+    </ul>
+    <p>Be ready to discuss your past projects in depth and connect them to the team’s domain. Interviewers notice when you have researched what the team actually builds.</p>
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I researched my target team’s domain and can discuss relevant technical depth</label></div>
+</section>
+
+<section id="behavioral" class="module">
+  <h2>5. Behavioral & “Why Apple”</h2>
+  <div class="meta"><span>Time: 6–10 hours</span></div>
+  <div class="lesson">
+    <h3>What strong signals look like</h3>
+    <ul>
+      <li>Specific, genuine interest in Apple products and the particular team</li>
+      <li>Craftsmanship and attention to detail</li>
+      <li>Ownership of outcomes and collaboration stories</li>
+      <li>Privacy-aware thinking</li>
+    </ul>
+    <div class="interview">
+      <strong>Prepare a strong “Why Apple?” and “Why this team?”</strong><br>
+      Weak: “I love Apple products.”<br>
+      Strong: Reference a specific technical challenge the team faces (on-device inference, sync reliability, privacy architecture) and connect it to your experience or interest.
+    </div>
+    <p>Have 6–8 STAR stories focused on ownership, craftsmanship, debugging hard issues, and working across teams.</p>
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I have strong STAR stories and a specific Why Apple / Why this team answer</label></div>
+</section>
+
+<section id="prep" class="module">
+  <h2>6. Full Preparation Plan</h2>
+  <div class="meta"><span>Time: Ongoing</span></div>
+  <div class="lesson">
+    <h3>Recommended sequence</h3>
+    <ol>
+      <li><strong>Coding (18–25 hrs)</strong> — Focus on clean code, edge cases, concurrency. Practice LRU, parsers, thread-safe structures. Do timed mocks.</li>
+      <li><strong>Design (12–18 hrs)</strong> — Practice offline-sync, notification systems, and privacy-constrained designs. Always start with constraints.</li>
+      <li><strong>Domain (8–12 hrs)</strong> — Deep research on your target team. Prepare project connections.</li>
+      <li><strong>Behavioral (6–10 hrs)</strong> — STAR stories + specific Why Apple answer.</li>
+      <li>Full mock loops covering coding + design + behavioral.</li>
+    </ol>
+    <div class="tip">Resources: LeetCode (medium, practice explaining), system design practice focused on mobile/offline constraints, Apple’s public technical talks and WWDC sessions on relevant topics.</div>
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I completed at least two full mock loops with feedback</label></div>
+</section>
+
+<footer style="margin-top:3rem;color:var(--muted);font-size:0.85rem;text-align:center;">
+  Apple course — Staff/Principal focused. Progress saved in your browser. Open the file offline after download.
+</footer>
+</main>
 </div>
+<script>
+const checks = document.querySelectorAll('.progress-check');
+const fill = document.getElementById('progressFill');
+const text = document.getElementById('progressText');
+function update() {
+  const done = [...checks].filter(c => c.checked).length;
+  const pct = checks.length ? Math.round((done / checks.length) * 100) : 0;
+  fill.style.width = pct + '%';
+  text.textContent = pct + '% complete (' + done + '/' + checks.length + ')';
+  localStorage.setItem('appleProgressV2', JSON.stringify([...checks].map(c => c.checked)));
+}
+function load() {
+  const s = localStorage.getItem('appleProgressV2');
+  if (s) {
+    const arr = JSON.parse(s);
+    checks.forEach((c, i) => { if (arr[i]) c.checked = true; });
+  }
+  update();
+}
+checks.forEach(c => c.addEventListener('change', update));
+function resetProgress() {
+  if (confirm('Reset all progress?')) {
+    checks.forEach(c => c.checked = false);
+    localStorage.removeItem('appleProgressV2');
+    update();
+  }
+}
+function animateFlow(id) {
+  const boxes = document.querySelectorAll('#' + id + ' .box');
+  boxes.forEach(b => b.classList.remove('active'));
+  let i = 0;
+  const timer = setInterval(() => {
+    if (i < boxes.length) {
+      boxes[i].classList.add('active');
+      i++;
+    } else clearInterval(timer);
+  }, 450);
+}
+load();
+document.querySelectorAll('.nav-item').forEach(a => {
+  a.addEventListener('click', () => {
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    a.classList.add('active');
+  });
+});
+</script>
 </body>
 </html>

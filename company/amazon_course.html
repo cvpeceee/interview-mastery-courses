@@ -1,1 +1,188 @@
-PLACEHOLDER_AMAZON
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amazon Software Engineer Interview Mastery — SDE II / L6+</title>
+<style>
+:root { --bg:#0f1117; --sidebar:#161922; --card:#1c1f2a; --accent:#ff9900; --accent2:#232f3e; --text:#e8eaed; --muted:#9aa0a6; --border:#2d313c; }
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:system-ui,sans-serif; background:var(--bg); color:var(--text); line-height:1.65; }
+.layout { display:flex; min-height:100vh; }
+.sidebar { width:270px; background:var(--sidebar); border-right:1px solid var(--border); padding:1.5rem 1rem; position:sticky; top:0; height:100vh; overflow-y:auto; }
+.sidebar h2 { font-size:1.05rem; margin-bottom:1rem; color:var(--accent); }
+.nav-item { display:block; padding:0.5rem 0.75rem; border-radius:8px; color:var(--text); text-decoration:none; margin-bottom:0.2rem; font-size:0.9rem; }
+.nav-item:hover,.nav-item.active { background:#252836; color:var(--accent); }
+.progress-box { margin-top:1.5rem; padding:1rem; background:#1a1d28; border-radius:10px; font-size:0.85rem; }
+.progress-bar { height:8px; background:#2d313c; border-radius:4px; margin:0.5rem 0; overflow:hidden; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--accent),#ff6600); width:0%; transition:width 0.3s; }
+main { flex:1; padding:2rem 2.5rem; max-width:1000px; }
+.module { background:var(--card); border-radius:12px; padding:1.6rem; margin-bottom:1.5rem; border:1px solid var(--border); }
+.module h2 { color:var(--accent); font-size:1.4rem; margin-bottom:0.5rem; }
+.meta { display:flex; gap:1rem; font-size:0.85rem; color:var(--muted); margin-bottom:1rem; }
+.meta span { background:#252836; padding:0.25rem 0.6rem; border-radius:6px; }
+.lesson { margin:1.2rem 0; padding:1rem; background:#161922; border-radius:8px; border-left:3px solid var(--accent); }
+.lesson h3 { font-size:1.1rem; margin-bottom:0.5rem; }
+.lesson ul,.lesson ol { margin:0.6rem 0 0.6rem 1.4rem; }
+.lesson li { margin:0.35rem 0; }
+.interview { background:#2a1f1a; border-left:3px solid #ff9f0a; padding:0.9rem 1rem; border-radius:6px; margin:0.9rem 0; }
+.tip { background:#1a2a1f; border-left:3px solid #34c759; padding:0.9rem 1rem; border-radius:6px; margin:0.9rem 0; }
+.check { margin:0.45rem 0; }
+.check input { margin-right:0.5rem; accent-color:var(--accent); }
+.anim-btn { background:#1e3a5f; color:#ff9900; border:1px solid #2a4a7a; padding:0.45rem 0.9rem; border-radius:6px; cursor:pointer; margin:0.3rem 0.3rem 0.3rem 0; }
+@media (max-width:800px) { .layout{flex-direction:column;} .sidebar{width:100%;height:auto;position:relative;} main{padding:1.2rem;} }
+</style>
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar">
+  <h2>Amazon Course</h2>
+  <a class="nav-item" href="#process">1. Process & Bar Raiser</a>
+  <a class="nav-item" href="#lps">2. Leadership Principles</a>
+  <a class="nav-item" href="#coding">3. Coding</a>
+  <a class="nav-item" href="#design">4. System Design</a>
+  <a class="nav-item" href="#prep">5. Prep Plan</a>
+  <div class="progress-box">
+    <strong>Your Progress</strong>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <div id="progressText">0% complete</div>
+    <button class="anim-btn" onclick="resetProgress()" style="margin-top:0.6rem;background:#3a1f1f;color:#ff6b6b;border:none;">Reset Progress</button>
+  </div>
+</aside>
+<main>
+<header>
+  <h1>Amazon Software Engineer Interview Mastery</h1>
+  <p style="color:var(--muted);margin:0.4rem 0 1rem;">SDE II / L6+ level. Leadership Principles are weighted as heavily as technical skills. Bar Raiser has veto power.</p>
+  <div style="color:var(--accent);font-size:1.05rem;">Recommended focused time: 50–70 hours</div>
+</header>
+
+<section id="process" class="module">
+  <h2>1. Interview Process & Bar Raiser</h2>
+  <div class="meta"><span>Time: 5–7 hours</span></div>
+  <div class="lesson">
+    <h3>Typical stages</h3>
+    <ul>
+      <li>Online Assessment (coding + work simulation + work style survey) for many roles</li>
+      <li>Phone screen (coding + LP questions)</li>
+      <li>Loop of 4–5 interviews (55–60 min each)</li>
+      <li>Bar Raiser — cross-team interviewer with veto power whose job is to maintain the hiring bar</li>
+    </ul>
+    <div class="tip">Almost every round includes Leadership Principle questions. Strong coding with weak LP stories often leads to rejection.</div>
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I understand the loop and the Bar Raiser role</label></div>
+</section>
+
+<section id="lps" class="module">
+  <h2>2. Leadership Principles (Highest ROI)</h2>
+  <div class="meta"><span>Time: 12–16 hours</span></div>
+  <div class="lesson">
+    <h3>Prepare thoroughly</h3>
+    <p>Amazon evaluates against all 16 Leadership Principles. For engineering roles the most frequently tested include:</p>
+    <ul>
+      <li>Customer Obsession</li>
+      <li>Ownership</li>
+      <li>Dive Deep</li>
+      <li>Bias for Action</li>
+      <li>Invent and Simplify</li>
+      <li>Deliver Results</li>
+      <li>Have Backbone; Disagree and Commit</li>
+      <li>Earn Trust</li>
+    </ul>
+    <p>Prepare 15–20 detailed STAR stories that can map to multiple principles. Include metrics and clear outcomes. Expect deep follow-up questions.</p>
+  </div>
+  <div class="interview">
+    <strong>Example probes</strong><br>
+    • Tell me about a time you took ownership of something outside your job description.<br>
+    • Tell me about a time you disagreed with a decision and what you did.<br>
+    • Tell me about a time you went deep to find a root cause.
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I have 15+ detailed STAR stories covering major LPs</label></div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I practiced answering with metrics and deep follow-ups</label></div>
+</section>
+
+<section id="coding" class="module">
+  <h2>3. Coding Preparation</h2>
+  <div class="meta"><span>Time: 15–20 hours</span></div>
+  <div class="lesson">
+    <h3>Focus</h3>
+    <ul>
+      <li>Medium LeetCode-style problems (arrays, graphs, trees, DP, strings)</li>
+      <li>Object-oriented design appears more often than at some peers</li>
+      <li>Coding rounds are usually paired with LP questions, so manage time</li>
+    </ul>
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I practiced coding while also answering LP questions under time pressure</label></div>
+</section>
+
+<section id="design" class="module">
+  <h2>4. System Design</h2>
+  <div class="meta"><span>Time: 10–15 hours</span></div>
+  <div class="lesson">
+    <h3>For SDE II / L5 and above</h3>
+    <ul>
+      <li>Practical distributed systems</li>
+      <li>AWS-informed thinking is a plus</li>
+      <li>Clarify requirements, discuss trade-offs and failure modes</li>
+    </ul>
+    <div class="interview"><strong>Examples:</strong> Design a notification system, rate limiter, storage service, or feature at Amazon scale.</div>
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I can design practical distributed systems with clear failure handling</label></div>
+</section>
+
+<section id="prep" class="module">
+  <h2>5. Preparation Plan</h2>
+  <div class="meta"><span>Time: Ongoing</span></div>
+  <div class="lesson">
+    <ol>
+      <li><strong>Leadership Principles (12–16 hrs)</strong> — Highest priority. Build and rehearse stories.</li>
+      <li>Coding practice (medium difficulty)</li>
+      <li>System design for L5+</li>
+      <li>Full loop mocks including Bar Raiser style probing</li>
+    </ol>
+    <div class="tip">Many candidates fail Amazon loops because of weak LP stories even when coding is solid. Prioritize this.</div>
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I completed full loop mocks with strong LP stories</label></div>
+</section>
+
+<footer style="margin-top:3rem;color:var(--muted);font-size:0.85rem;text-align:center;">
+  Amazon course — SDE II / L6+ focused. Progress saved in your browser.
+</footer>
+</main>
+</div>
+<script>
+const checks = document.querySelectorAll('.progress-check');
+const fill = document.getElementById('progressFill');
+const text = document.getElementById('progressText');
+function update() {
+  const done = [...checks].filter(c => c.checked).length;
+  const pct = checks.length ? Math.round((done / checks.length) * 100) : 0;
+  fill.style.width = pct + '%';
+  text.textContent = pct + '% complete (' + done + '/' + checks.length + ')';
+  localStorage.setItem('amazonProgressV2', JSON.stringify([...checks].map(c => c.checked)));
+}
+function load() {
+  const s = localStorage.getItem('amazonProgressV2');
+  if (s) {
+    const arr = JSON.parse(s);
+    checks.forEach((c, i) => { if (arr[i]) c.checked = true; });
+  }
+  update();
+}
+checks.forEach(c => c.addEventListener('change', update));
+function resetProgress() {
+  if (confirm('Reset all progress?')) {
+    checks.forEach(c => c.checked = false);
+    localStorage.removeItem('amazonProgressV2');
+    update();
+  }
+}
+load();
+document.querySelectorAll('.nav-item').forEach(a => {
+  a.addEventListener('click', () => {
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    a.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

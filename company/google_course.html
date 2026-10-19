@@ -3,15 +3,307 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Google Software Engineer Interview Mastery</title>
-<style>body{font-family:system-ui;background:#0f1117;color:#e8eaed;padding:2rem;} .module{background:#1c1f2a;border-radius:12px;padding:1.5rem;margin:1rem 0;}</style>
+<title>Google Software Engineer Interview Mastery — L5+ / Staff</title>
+<style>
+:root { --bg:#0f1117; --sidebar:#161922; --card:#1c1f2a; --accent:#4285f4; --accent2:#34a853; --text:#e8eaed; --muted:#9aa0a6; --border:#2d313c; }
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:system-ui,sans-serif; background:var(--bg); color:var(--text); line-height:1.65; }
+.layout { display:flex; min-height:100vh; }
+.sidebar { width:270px; background:var(--sidebar); border-right:1px solid var(--border); padding:1.5rem 1rem; position:sticky; top:0; height:100vh; overflow-y:auto; }
+.sidebar h2 { font-size:1.05rem; margin-bottom:1rem; color:var(--accent); }
+.nav-item { display:block; padding:0.5rem 0.75rem; border-radius:8px; color:var(--text); text-decoration:none; margin-bottom:0.2rem; font-size:0.9rem; }
+.nav-item:hover,.nav-item.active { background:#252836; color:var(--accent); }
+.progress-box { margin-top:1.5rem; padding:1rem; background:#1a1d28; border-radius:10px; font-size:0.85rem; }
+.progress-bar { height:8px; background:#2d313c; border-radius:4px; margin:0.5rem 0; overflow:hidden; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--accent),var(--accent2)); width:0%; transition:width 0.3s; }
+main { flex:1; padding:2rem 2.5rem; max-width:1000px; }
+.module { background:var(--card); border-radius:12px; padding:1.6rem; margin-bottom:1.5rem; border:1px solid var(--border); }
+.module h2 { color:var(--accent); font-size:1.4rem; margin-bottom:0.5rem; }
+.meta { display:flex; gap:1rem; font-size:0.85rem; color:var(--muted); margin-bottom:1rem; }
+.meta span { background:#252836; padding:0.25rem 0.6rem; border-radius:6px; }
+.lesson { margin:1.2rem 0; padding:1rem; background:#161922; border-radius:8px; border-left:3px solid var(--accent); }
+.lesson h3 { font-size:1.1rem; margin-bottom:0.5rem; }
+.lesson ul,.lesson ol { margin:0.6rem 0 0.6rem 1.4rem; }
+.lesson li { margin:0.35rem 0; }
+.interview { background:#2a1f1a; border-left:3px solid #ff9f0a; padding:0.9rem 1rem; border-radius:6px; margin:0.9rem 0; }
+.tip { background:#1a2a1f; border-left:3px solid #34c759; padding:0.9rem 1rem; border-radius:6px; margin:0.9rem 0; }
+.check { margin:0.45rem 0; }
+.check input { margin-right:0.5rem; accent-color:var(--accent); }
+.anim-container { background:#0d0f14; border-radius:10px; padding:1rem; margin:1rem 0; border:1px solid #2a2e3a; }
+.anim-btn { background:#1e3a5f; color:var(--accent2); border:1px solid #2a4a7a; padding:0.45rem 0.9rem; border-radius:6px; cursor:pointer; margin:0.3rem 0.3rem 0.3rem 0; }
+.flow-box { display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap; margin:0.8rem 0; }
+.box { padding:0.55rem 1rem; background:#252836; border-radius:8px; border:2px solid #3a3f50; font-size:0.85rem; transition:all 0.4s; }
+.box.active { border-color:var(--accent); background:#1a2a3a; }
+@media (max-width:800px) { .layout{flex-direction:column;} .sidebar{width:100%;height:auto;position:relative;} main{padding:1.2rem;} }
+</style>
 </head>
 <body>
-<h1>Google Course</h1>
-<div class="module">
-<h2>Algorithmic coding, system design, AI Infrastructure, Ads Infrastructure, Googleyness</h2>
-<p>Staff / Principal level. Full interactive textbook version is in the interview-mastery-courses.tar.gz archive.</p>
-<p>Open the complete file from the archive for modules, interview practice, and progress tracking.</p>
+<div class="layout">
+<aside class="sidebar">
+  <h2>Google Course</h2>
+  <a class="nav-item" href="#process">1. Process & Levels</a>
+  <a class="nav-item" href="#coding">2. Coding Deep Dive</a>
+  <a class="nav-item" href="#design">3. System Design (L5+)</a>
+  <a class="nav-item" href="#aiinfra">4. AI Infrastructure</a>
+  <a class="nav-item" href="#adsinfra">5. Ads Infrastructure</a>
+  <a class="nav-item" href="#googlyness">6. Googleyness</a>
+  <a class="nav-item" href="#prep">7. Full Prep Plan</a>
+  <div class="progress-box">
+    <strong>Your Progress</strong>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <div id="progressText">0% complete</div>
+    <button class="anim-btn" onclick="resetProgress()" style="margin-top:0.6rem;background:#3a1f1f;color:#ff6b6b;border:none;">Reset Progress</button>
+  </div>
+</aside>
+<main>
+<header>
+  <h1>Google Software Engineer Interview Mastery</h1>
+  <p style="color:var(--muted);margin:0.4rem 0 1rem;">L5+ / Staff level. Heavy algorithmic coding with follow-ups, structured system design, and Googleyness & Leadership.</p>
+  <div style="color:var(--accent2);font-size:1.05rem;">Recommended focused time: 55–75 hours</div>
+</header>
+
+<section id="process" class="module">
+  <h2>1. Interview Process & Levels</h2>
+  <div class="meta"><span>Time: 5–7 hours</span></div>
+  <div class="lesson">
+    <h3>Typical stages</h3>
+    <ul>
+      <li>Recruiter screen</li>
+      <li>Technical phone screen(s) — coding (shared doc or editor)</li>
+      <li>Onsite / virtual loop (usually 4–5 × 45 min): 2–3 coding, system design (L5+), Googleyness & Leadership</li>
+      <li>Hiring committee</li>
+      <li>Team matching</li>
+    </ul>
+    <p>Some teams have piloted AI-assisted code comprehension rounds. Coding remains the core filter for most candidates.</p>
+  </div>
+  <div class="lesson">
+    <h3>Level differences</h3>
+    <ul>
+      <li><strong>L3/L4</strong> — Mostly coding + Googleyness. Light or no dedicated system design.</li>
+      <li><strong>L5+</strong> — Dedicated system design round. Higher expectation on trade-offs and leadership signals.</li>
+      <li><strong>Staff+</strong> — Deeper design, domain discussion, and evidence of technical leadership.</li>
+    </ul>
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I understand Google’s loop structure and level expectations</label></div>
+</section>
+
+<section id="coding" class="module">
+  <h2>2. Coding Interview Deep Dive</h2>
+  <div class="meta"><span>Time: 22–30 hours</span></div>
+  <div class="lesson">
+    <h3>What Google evaluates</h3>
+    <ul>
+      <li>Correct and efficient solution</li>
+      <li>Clear communication of approach before and during coding</li>
+      <li>Ability to handle follow-ups and adapt</li>
+      <li>Self-debugging and edge-case thinking</li>
+    </ul>
+    <p>Problems are often medium-to-hard and frequently combine patterns. Interviewers add context and follow-ups.</p>
+  </div>
+  <div class="lesson">
+    <h3>Highest-ROI patterns</h3>
+    <ul>
+      <li>Graphs: BFS/DFS, shortest path, topological sort, connected components</li>
+      <li>Trees and binary trees</li>
+      <li>Dynamic programming (recognize when it applies)</li>
+      <li>Intervals, sliding window, two pointers</li>
+      <li>Hash maps and design of data structures</li>
+    </ul>
+  </div>
+  <div class="interview">
+    <strong>Practice approach</strong><br>
+    1. Clarify the problem and constraints.<br>
+    2. Give 1–2 examples and walk through them.<br>
+    3. State your approach and complexity before coding.<br>
+    4. Code while narrating.<br>
+    5. Test with examples and discuss optimizations or follow-ups.
+  </div>
+  <div class="anim-container">
+    <h4>Animation: Google Coding Flow</h4>
+    <div class="flow-box" id="codeFlow">
+      <div class="box">Clarify</div><span>→</span>
+      <div class="box">Examples</div><span>→</span>
+      <div class="box">Approach + Complexity</div><span>→</span>
+      <div class="box">Code</div><span>→</span>
+      <div class="box">Test & Follow-ups</div>
+    </div>
+    <button class="anim-btn" onclick="animateFlow('codeFlow')">Animate</button>
+  </div>
+  <div class="tip">Do not jump straight to code. Google interviewers care about your thinking process. Practice explaining out loud. Aim for 50+ medium/hard problems with deliberate follow-up practice.</div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I solved 50+ medium/hard problems with strong pattern recognition and follow-ups</label></div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I consistently explain approach and complexity before coding</label></div>
+</section>
+
+<section id="design" class="module">
+  <h2>3. System Design (L5+)</h2>
+  <div class="meta"><span>Time: 14–20 hours</span></div>
+  <div class="lesson">
+    <h3>Expected structure</h3>
+    <ul>
+      <li>Clarify requirements and estimate scale first</li>
+      <li>High-level design early</li>
+      <li>Deep dive on critical components based on interviewer probes</li>
+      <li>Discuss trade-offs, failure modes, caching, consistency, and capacity</li>
+    </ul>
+  </div>
+  <div class="interview">
+    <strong>Common prompts</strong><br>
+    • Design a URL shortener<br>
+    • Design a rate limiter<br>
+    • Design a news feed or notification system<br>
+    • Design a distributed cache<br>
+    • Design a chat system<br>
+    • Design collaborative editing<br><br>
+    Get a simple working version on the board quickly, then iterate. Defend capacity numbers and failure handling.
+  </div>
+  <div class="anim-container">
+    <h4>Animation: System Design Flow</h4>
+    <div class="flow-box" id="designFlow">
+      <div class="box">Clarify & Estimate</div><span>→</span>
+      <div class="box">High-level Design</div><span>→</span>
+      <div class="box">Deep Dive</div><span>→</span>
+      <div class="box">Trade-offs & Failures</div>
+    </div>
+    <button class="anim-btn" onclick="animateFlow('designFlow')">Animate</button>
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I can run a full system design session with capacity estimates and failure handling</label></div>
+</section>
+
+<section id="aiinfra" class="module">
+  <h2>4. AI Infrastructure (Staff Level)</h2>
+  <div class="meta"><span>Time: 15–20 hours</span></div>
+  <div class="lesson">
+    <h3>Core topics for AI Infra roles</h3>
+    <ul>
+      <li>Large-scale training systems: data parallelism, model parallelism, pipeline parallelism</li>
+      <li>Distributed training orchestration and fault tolerance</li>
+      <li>Inference serving: batching, KV-cache management, continuous batching, latency vs throughput</li>
+      <li>Resource scheduling on GPU clusters (gang scheduling, preemption, multi-tenant)</li>
+      <li>Data pipelines for training: ingestion, feature stores, versioning, data quality</li>
+      <li>Performance debugging: profiling across network, compute, and memory</li>
+      <li>Reliability: checkpointing, restart, straggler mitigation</li>
+    </ul>
+  </div>
+  <div class="lesson">
+    <h3>Interview-style questions</h3>
+    <ul>
+      <li>Design a system to train a large model across thousands of GPUs. How do you handle failures?</li>
+      <li>How would you design an inference serving stack for low-latency LLM requests?</li>
+      <li>Explain the trade-offs between data parallelism and model parallelism.</li>
+      <li>How do you diagnose a training job that is slower than expected?</li>
+    </ul>
+  </div>
+  <div class="interview">
+    <strong>Staff-level signals</strong><br>
+    Ability to discuss failure modes at scale, capacity planning, cost vs performance trade-offs, and how you would influence hardware or scheduling decisions. Know common tools and patterns (e.g., collective communication, all-reduce, checkpointing strategies).
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I can design and discuss large-scale training and inference infrastructure with failure modes</label></div>
+</section>
+
+<section id="adsinfra" class="module">
+  <h2>5. Ads Infrastructure (High-Throughput Systems)</h2>
+  <div class="meta"><span>Time: 12–16 hours</span></div>
+  <div class="lesson">
+    <h3>Key systems concepts</h3>
+    <ul>
+      <li>Real-time bidding and ad serving pipelines</li>
+      <li>Extremely high QPS, low-latency serving</li>
+      <li>Feature computation and retrieval at scale</li>
+      <li>Auction systems and ranking</li>
+      <li>Experimentation platforms and A/B testing infrastructure</li>
+      <li>Data freshness, consistency trade-offs, and caching</li>
+      <li>Monitoring, alerting, and SLO-driven design</li>
+    </ul>
+  </div>
+  <div class="interview">
+    <strong>Example design prompt</strong><br>
+    Design an ad serving system that must respond in tens of milliseconds while handling millions of requests per second. Discuss ranking, feature retrieval, caching, and how you would handle traffic spikes or feature store failures.
+  </div>
+  <div class="tip">Focus on latency budgets, failure isolation, and how you measure and improve the system end-to-end.</div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I can design high-throughput, low-latency serving systems with clear latency budgets and failure handling</label></div>
+</section>
+
+<section id="googlyness" class="module">
+  <h2>4. Googleyness & Leadership</h2>
+  <div class="meta"><span>Time: 6–10 hours</span></div>
+  <div class="lesson">
+    <h3>What is evaluated</h3>
+    <ul>
+      <li>Collaboration and handling ambiguity</li>
+      <li>Stepping up or stepping back appropriately</li>
+      <li>Conflict resolution and sharing credit</li>
+      <li>Intellectual humility and learning from feedback</li>
+    </ul>
+    <p>Prepare concrete STAR stories. Avoid generic “I’m a team player” statements. Interviewers probe for specifics.</p>
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I have 6–8 specific Googleyness stories ready</label></div>
+</section>
+
+<section id="prep" class="module">
+  <h2>5. Full Preparation Plan</h2>
+  <div class="meta"><span>Time: Ongoing</span></div>
+  <div class="lesson">
+    <ol>
+      <li><strong>Coding (22–30 hrs)</strong> — Pattern practice (graphs, trees, DP, intervals). Focus on clear communication and follow-ups.</li>
+      <li><strong>System Design (14–20 hrs)</strong> — Framework + multiple mocks. Practice estimating and failure modes.</li>
+      <li><strong>Googleyness (6–10 hrs)</strong> — Specific stories.</li>
+      <li>Full mock loops.</li>
+    </ol>
+    <div class="tip">Resources: LeetCode (pattern-based), Grokking the System Design Interview, Google engineering blogs and papers.</div>
+  </div>
+  <div class="check"><label><input type="checkbox" class="progress-check"> I completed multiple full mock loops</label></div>
+</section>
+
+<footer style="margin-top:3rem;color:var(--muted);font-size:0.85rem;text-align:center;">
+  Google course — L5+/Staff focused. Progress saved in your browser.
+</footer>
+</main>
 </div>
+<script>
+const checks = document.querySelectorAll('.progress-check');
+const fill = document.getElementById('progressFill');
+const text = document.getElementById('progressText');
+function update() {
+  const done = [...checks].filter(c => c.checked).length;
+  const pct = checks.length ? Math.round((done / checks.length) * 100) : 0;
+  fill.style.width = pct + '%';
+  text.textContent = pct + '% complete (' + done + '/' + checks.length + ')';
+  localStorage.setItem('googleProgressV2', JSON.stringify([...checks].map(c => c.checked)));
+}
+function load() {
+  const s = localStorage.getItem('googleProgressV2');
+  if (s) {
+    const arr = JSON.parse(s);
+    checks.forEach((c, i) => { if (arr[i]) c.checked = true; });
+  }
+  update();
+}
+checks.forEach(c => c.addEventListener('change', update));
+function resetProgress() {
+  if (confirm('Reset all progress?')) {
+    checks.forEach(c => c.checked = false);
+    localStorage.removeItem('googleProgressV2');
+    update();
+  }
+}
+function animateFlow(id) {
+  const boxes = document.querySelectorAll('#' + id + ' .box');
+  boxes.forEach(b => b.classList.remove('active'));
+  let i = 0;
+  const timer = setInterval(() => {
+    if (i < boxes.length) {
+      boxes[i].classList.add('active');
+      i++;
+    } else clearInterval(timer);
+  }, 450);
+}
+load();
+document.querySelectorAll('.nav-item').forEach(a => {
+  a.addEventListener('click', () => {
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    a.classList.add('active');
+  });
+});
+</script>
 </body>
 </html>
